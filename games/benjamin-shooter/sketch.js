@@ -138,7 +138,6 @@ function setup() {
 
 	windowResized();
 
-	print("new version");
 
 }
 
