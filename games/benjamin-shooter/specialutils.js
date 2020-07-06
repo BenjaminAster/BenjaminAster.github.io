@@ -7,9 +7,8 @@ function Deodorant() {
 	let vy = -100*unit / frameRate;
 	let vx = -4*unit / frameRate;
 	
-
 	let actDur = frameRate * 15;
-	let blinkDur = frameRate * 3;
+	let blinkDur = frameRate * 0;
 	let blinkSpan = frameRate * 3 / 4;
 
 	let deoImg = {

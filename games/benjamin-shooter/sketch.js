@@ -137,7 +137,7 @@ function setup() {
 	{ interface = new Interface(); }
 
 	windowResized();
-	
+
 
 }
 
@@ -224,7 +224,23 @@ function draw() {
 			strokeWeight(5);
 			textSize(unit * 3);
 			textAlign(LEFT, TOP);
-			text(`Sophias vernichtet: ${score}`, unit, unit);
+			let infoString = `Sophias vernichtet: ${score}`;
+			if (deodorant != null) {
+				infoString += ` ● Deodorant (D): /`;
+			} else if (frameCount - deodorantSpan >= prevDeodorant) {
+				infoString += ` ● Deodorant (D): 0s`;
+			} else {
+				infoString += ` ● Deodorant (D): ${int((prevDeodorant + deodorantSpan - frameCount) / frameRate)}s`;
+			}
+			if (schoolbagElias != null) {
+				infoString += ` ● Schultasche (S): /`;
+			} else if (frameCount - schoolbagEliasSpan >= prevSchoolbagElias) {
+				infoString += ` ● Schultasche (S): 0s`;
+			} else {
+				infoString += ` ● Schultasche (S): ${int((prevSchoolbagElias + schoolbagEliasSpan - frameCount) / frameRate)}s`;
+			}
+
+			text(infoString, unit, unit);
 		}
 	}
 
