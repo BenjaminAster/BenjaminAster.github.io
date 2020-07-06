@@ -11,7 +11,7 @@ function Ball() {
 	img.w = img.h * img.img.width / img.img.height;
 
 	this.size = unit * 6;
-	this.vx = unit * 40 / frameRate;
+	this.vx = unit * 50 / frameRate;
 
 
 	this.update = function () {

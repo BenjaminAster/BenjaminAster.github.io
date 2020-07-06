@@ -7,7 +7,7 @@ function Shooter() {
 	this.size;
 
 	this.prevShoot = frameCount;
-	this.shootSpan = frameRate * 3/4;
+	this.shootSpan = frameRate * 2/4;
 
 	this.windowResized = function () {
 		this.size = unit * 30;
