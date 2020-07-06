@@ -1,5 +1,5 @@
 
-console.log("hello_v03");
+console.log("hello_v06");
 
 function setCookie(cname, cvalue, exdays) {
   var d = new Date();
@@ -21,22 +21,27 @@ function getCookie(cname) {
       return c.substring(name.length, c.length);
     }
   }
-  return "error_not_found";
+  return "";
 }
 
+
 function checkCookie() {
-  var username = getCookie("username");
+  var username = getCookie("username_1");
   if (username != "") {
    alert("Welcome again " + username);
   } else {
     username = prompt("Please enter your name:", "");
     if (username != "" && username != null) {
-      setCookie("username", username, 365);
+      setCookie("username_1", username, 365);
     }
   }
 }
 
-setCookie("name", "benjamin", 10);
+
+//setCookie("name", "benjamin", 10);
 
 
-console.log(getCookie("name"));
+//console.log(getCookie("name"));
+checkCookie();
+//setCookie("username_1", "benjamin_1", 1);
+console.log(getCookie("username_1"));
