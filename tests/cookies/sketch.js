@@ -1,7 +1,6 @@
-
 console.log("hello_v02");
 
-document.cookie = "testcookie=blablabla";
+//document.cookie = "testcookie=blablabla";
 
 function getCookie(cname) {
   var name = cname + "=";
