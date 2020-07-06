@@ -138,6 +138,8 @@ function setup() {
 
 	windowResized();
 
+	print("v31");
+
 
 }
 
