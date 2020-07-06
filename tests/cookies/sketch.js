@@ -1,5 +1,5 @@
 
-console.log("hello");
+console.log("hello_v02");
 
 document.cookie = "testcookie=blablabla";
 
