@@ -1,4 +1,4 @@
-console.log("hello_v04");
+console.log("hello_v05");
 
 //document.cookie = "testcookie=blablabla";
 
