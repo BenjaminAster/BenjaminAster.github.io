@@ -5,9 +5,10 @@ function Shooter() {
 	this.y;
 	this.mouthPos = { x: 0.5, y: 0.745 };
 	this.size;
+	this.powerModeEnabled = false;
 
 	this.prevShoot = frameCount;
-	this.shootSpan = frameRate * 2/4;
+	this.shootSpan = frameRate * 2 / 4;
 
 	this.windowResized = function () {
 		this.size = unit * 30;
@@ -27,8 +28,14 @@ function Shooter() {
 	}
 
 	this.shoot = function () {
-		balls.push(new Ball(this.x, this.y));
+
+		balls.push(new Ball( /*this.x, this.y,*/ this.powerModeEnabled));
 		this.prevShoot = frameCount;
+	}
+
+	this.powerMode = function (enable) {
+		this.powerModeEnabled = enable;
+		this.shootSpan *= (enable) ? 1 / 6 : 6;
 	}
 }
 

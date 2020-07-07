@@ -125,6 +125,8 @@ function Interface() {
 			deodorantSpan = frameRate * 30;
 			schoolbagElias = null;
 			schoolbagEliasSpan = frameRate * 30;
+			megaphoneMatisse = null;
+			megaphoneMatisseSpan = frameRate * 30;
 			interface.playing();
 		});
 

@@ -20,7 +20,7 @@ let interface;
 let fontFamily;
 
 let elementsLoaded = 0;
-let elementsCount = 13;
+let elementsCount = 15;
 
 // special utils:
 let deodorant = null;
@@ -30,6 +30,10 @@ let deodorantSpan = 0;
 let schoolbagElias = null;
 let prevSchoolbagElias = -9999;
 let schoolbagEliasSpan = 0;
+
+let megaphoneMatisse = null;
+let prevMegaphoneMatisse = -9999;
+let megaphoneMatisseSpan = 0;
 
 let balls = [];
 let enemies = [];
@@ -109,10 +113,16 @@ function setup() {
 												elementsLoaded++;
 												imgs.elias = loadImage(imgPaths.elias, successCallback = function () {
 													elementsLoaded++;
-													audios.willkommen = loadSound(audioPaths.willkommen, successCallback = function () {
+													imgs.matisse = loadImage(imgPaths.matisse, successCallback = function () {
 														elementsLoaded++;
-														getAudioContext().suspend();
-														masterVolume(volume);
+														imgs.megaphone = loadImage(imgPaths.megaphone, successCallback = function () {
+															elementsLoaded++;
+															audios.willkommen = loadSound(audioPaths.willkommen, successCallback = function () {
+																elementsLoaded++;
+																getAudioContext().suspend();
+																masterVolume(volume);
+															});
+														});
 													});
 												});
 											});
@@ -232,6 +242,10 @@ function draw() {
 			schoolbagElias.update();
 			schoolbagElias.show();
 		}
+		if (megaphoneMatisse != null) {
+			megaphoneMatisse.update();
+			megaphoneMatisse.show();
+		}
 
 		if (gameState == gameStates.gameOver) {
 			interface.show(gameStates.gameOver);
@@ -243,7 +257,6 @@ function draw() {
 		textSize(unit * 3);
 		textAlign(LEFT, TOP);
 		let infoString = "";
-		print(score, highScore);
 		infoString += (score == highScore) ? `Neuer High Score: ${score}` : `Score: ${score} ● High Score: ${highScore}`;
 
 		if (deodorant != null) {
@@ -259,6 +272,13 @@ function draw() {
 			infoString += ` ● Schultasche (S): ✔`;
 		} else {
 			infoString += ` ● Schultasche (S): ${ceil((prevSchoolbagElias + schoolbagEliasSpan - frameCount) / frameRate)}s`;
+		}
+		if (megaphoneMatisse != null) {
+			infoString += ` ● Megafon (A): ${(megaphoneMatisse.getRemTime() == null) ? "✖" : megaphoneMatisse.getRemTime() + "s"}`;
+		} else if (frameCount - megaphoneMatisseSpan >= prevMegaphoneMatisse) {
+			infoString += ` ● Megafon (A): ✔`;
+		} else {
+			infoString += ` ● Megafon (A): ${ceil((prevMegaphoneMatisse + megaphoneMatisseSpan - frameCount) / frameRate)}s`;
 		}
 
 		text(infoString, unit, unit);
@@ -281,14 +301,14 @@ function draw() {
 	}
 
 	if (elementsLoaded != elementsCount) {
-		textAlign(CENTER, TOP);
-		textSize(unit * 6);
+		textAlign(CENTER, CENTER);
+		textSize(unit * 5);
 		let loadingBar = "[";
 		for (let i = 0; i < elementsCount; i++) {
 			(i < elementsLoaded) ? loadingBar = loadingBar + "▮" : loadingBar = loadingBar + "▯";
 		}
 		loadingBar = loadingBar + "]";
-		text(loadingBar, width / 2, height * 10 / 16);
+		text(loadingBar, width / 2, height * 10.6 / 16);
 	}
 }
 
@@ -317,6 +337,9 @@ function keyPressed() {
 	}
 	if (key == 's' && schoolbagElias == null && frameCount - schoolbagEliasSpan >= prevSchoolbagElias) {
 		schoolbagElias = new SchoolbagElias();
+	}
+	if (key == 'a' && megaphoneMatisse == null && frameCount - megaphoneMatisseSpan >= prevMegaphoneMatisse) {
+		megaphoneMatisse = new MegaphoneMatisse();
 	}
 	if (key == 'm') {
 		userStartAudio();

@@ -173,7 +173,89 @@ function SchoolbagElias() {
 }
 
 function MegaphoneMatisse() {
-	
+	let states = {
+		in: 0,
+		shaking: 1,
+		out: 2,
+		disappearing: 3,
+	}
+	let state = states.in;
+
+	let shakeStart;
+	let shakeDur = frameRate * 5;
+	let shakeSpan = frameRate * 4 / 4;
+
+	let matisseImg = {
+		img: imgs.matisse,
+		size: unit * 25,
+		relX: 0.52,
+		relY: 0.64,
+	}
+	let megaphoneImg = {
+		img: imgs.megaphone,
+		relX: 0.0,
+		relY: 0.58,
+		rot: -PI / 8,
+		rotSpeed: PI / 256.0,
+		size: unit * 25,
+	}
+
+	let x = matisseImg.relX * matisseImg.size;
+	let y = height + matisseImg.relY * matisseImg.size;
+	let vy = 30 * unit / frameRate;
+
+
+	this.update = function () {
+		if (state == states.in) {
+			y -= vy;
+			if (y <= height * 7 / 8) {
+				shakeStart = frameCount;
+				state = states.shaking;
+				shooter.powerMode(true);
+			}
+		} else if (state == states.shaking) {
+			if ((frameCount - shakeStart) % shakeSpan < shakeSpan / 2) {
+				megaphoneImg.rot += megaphoneImg.rotSpeed;
+			} else {
+				megaphoneImg.rot -= megaphoneImg.rotSpeed;
+			}
+			if (frameCount - shakeStart >= shakeDur) {
+				state = states.out;
+				shooter.powerMode(false);
+				megaphoneImg.rot = 0;
+			}
+		} else if (state == states.out) {
+			y += vy;
+			if (y > height + matisseImg.size * matisseImg.relY) {
+				state = states.disappearing
+			}
+		}
+	}
+
+	this.show = function () {
+
+		image(matisseImg.img,
+			x - matisseImg.relX * matisseImg.size,
+			y - matisseImg.relY * matisseImg.size,
+			matisseImg.size, matisseImg.size);
+
+		push();
+		translate(x, y);
+		rotate(megaphoneImg.rot);
+		image(megaphoneImg.img, -megaphoneImg.size * megaphoneImg.relX, -megaphoneImg.size * megaphoneImg.relY, megaphoneImg.size, megaphoneImg.size);
+		pop();
+
+		if (state == states.disappearing) {
+			megaphoneMatisse = null;
+			prevMegaphoneMatisse = frameCount;
+		}
+
+
+	}
+
+	this.getRemTime = function () {
+		return (state == states.shaking) ? ceil((shakeDur + shakeStart - frameCount) / frameRate) : null;
+	}
 }
 
 

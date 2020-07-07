@@ -1,8 +1,10 @@
 
 
-function Ball() {
+function Ball(powerMode) {
 	this.x = shooter.x
 	this.y = shooter.y
+
+	this.powerMode = false;
 
 	let img = {}
 	img.img = imgs.satchFederpennal;
@@ -12,6 +14,7 @@ function Ball() {
 
 	this.size = unit * 6;
 	this.vx = unit * 50 / frameRate;
+	if (powerMode) this.vx *= 2;
 
 
 	this.update = function () {
@@ -19,7 +22,6 @@ function Ball() {
 		if (this.x > shooter.x - unit * 7) {
 			this.y = shooter.y;
 		}
-
 	}
 
 	this.checkCollision = function () {
@@ -39,6 +41,10 @@ function Ball() {
 
 	this.show = function () {
 		image(img.img, this.x, this.y - img.h / 2, img.w, img.h);
+	}
+
+	this.powerMode = function (enable) {
+		this.vx *= (enable) ? 3 : 1 / 3;
 	}
 }
 
