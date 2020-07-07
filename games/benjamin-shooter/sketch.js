@@ -240,7 +240,7 @@ function draw() {
 		textAlign(LEFT, TOP);
 		let infoString = `Score: ${score} ● High Score: ${highScore}`;
 		if (deodorant != null) {
-			infoString += ` ● Deo (D): ✖`;
+			infoString += ` ● Deo (D): ${isNaN(deodorant.getRemTime()) ? "✖" : deodorant.getRemTime() + "s"}`;
 		} else if (frameCount - deodorantSpan >= prevDeodorant) {
 			infoString += ` ● Deo (D): ✔`;
 		} else {
@@ -256,6 +256,8 @@ function draw() {
 
 		text(infoString, unit, unit);
 	}
+
+
 
 	if (gameState != gameStates.playing) {
 		interface.show(gameState);

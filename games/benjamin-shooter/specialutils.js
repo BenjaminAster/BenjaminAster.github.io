@@ -4,9 +4,9 @@ function Deodorant() {
 
 	let x = width * 1 / 12;
 	let y = height + unit * 7;
-	let vy = -100*unit / frameRate;
-	let vx = -4*unit / frameRate;
-	
+	let vy = -100 * unit / frameRate;
+	let vx = -4 * unit / frameRate;
+
 	let actDur = frameRate * 15;
 	let blinkDur = frameRate * 0;
 	let blinkSpan = frameRate * 3 / 4;
@@ -24,7 +24,7 @@ function Deodorant() {
 		relY: 0.75,
 		size: 0,
 		startTime: undefined,
-		scaling: 200*unit / frameRate,
+		scaling: 200 * unit / frameRate,
 		show: false
 	}
 
@@ -86,6 +86,10 @@ function Deodorant() {
 
 	};
 
+	this.getRemTime = function () {
+		return ceil((actDur + fogImg.startTime - frameCount) / frameRate);
+	}
+
 }
 
 function SchoolbagElias() {
@@ -101,7 +105,7 @@ function SchoolbagElias() {
 		img: imgs.satchSchultasche,
 		x: undefined,
 		y: undefined,
-		vy: 120*unit / frameRate,
+		vy: 120 * unit / frameRate,
 		relX: 0.5,
 		relY: 0.02,
 		size: unit * 30,
@@ -111,7 +115,7 @@ function SchoolbagElias() {
 		img: imgs.elias,
 		x: width * 2 / 3,
 		y: -unit * 50,
-		vy: 60*unit / frameRate,
+		vy: 60 * unit / frameRate,
 		relX: 0.34,
 		relY: 0.97,
 		size: unit * 100,
@@ -169,6 +173,6 @@ function SchoolbagElias() {
 }
 
 function MegaphoneMatisse() {
-	
+
 }
 
