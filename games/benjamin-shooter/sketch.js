@@ -238,7 +238,10 @@ function draw() {
 		strokeWeight(5);
 		textSize(unit * 3);
 		textAlign(LEFT, TOP);
-		let infoString = `Score: ${score} ● High Score: ${highScore}`;
+		let infoString = "";
+		print(score, highScore);
+		infoString += (score == highScore) ? `Neuer High Score: ${score}` : `Score: ${score} ● High Score: ${highScore}`;
+
 		if (deodorant != null) {
 			infoString += ` ● Deo (D): ${isNaN(deodorant.getRemTime()) ? "✖" : deodorant.getRemTime() + "s"}`;
 		} else if (frameCount - deodorantSpan >= prevDeodorant) {

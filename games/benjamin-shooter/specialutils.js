@@ -15,7 +15,7 @@ function Deodorant() {
 		img: imgs.deodorant,
 		relX: 0.6,
 		relY: 0.1,
-		size: unit * 30
+		size: unit * 30,
 	}
 	let fogImg = {
 		img: imgs.fog,
@@ -173,6 +173,7 @@ function SchoolbagElias() {
 }
 
 function MegaphoneMatisse() {
-	
+
 }
+
 
