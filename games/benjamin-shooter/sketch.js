@@ -46,24 +46,24 @@ let frameRate;
 
 let imgPaths = {
 	akadGym:
-		"https://raw.githubusercontent.com/BenjaminAster/Benjamin-Aster/master/stuff/gallery/akadgym_dunkel_verschwommen.jpg",
+		"https://benjaminaster.github.io/gallery/akadgym_dunkel_verschwommen.jpg",
 	benjaminShooter:
-		"https://raw.githubusercontent.com/BenjaminAster/Benjamin-Aster/master/stuff/gallery/benjamin_shooter_v03.png",
+		"https://benjaminaster.github.io/gallery/benjamin_shooter_v03.png",
 	benjaminShooterRH:
-		"https://raw.githubusercontent.com/BenjaminAster/Benjamin-Aster/master/stuff/gallery/benjamin_shooter_v03_rechte_haelfte.png",
+		"https://benjaminaster.github.io/gallery/benjamin_shooter_v03_rechte_haelfte.png",
 	satchFederpennal:
-		"https://raw.githubusercontent.com/BenjaminAster/Benjamin-Aster/master/stuff/gallery/satch_federpennal.png",
+		"https://benjaminaster.github.io/gallery/satch_federpennal.png",
 	sophiaRund: function (num) {
-		return `https://raw.githubusercontent.com/BenjaminAster/Benjamin-Aster/master/stuff/gallery/Sophia_${num}_rund.png`;
+		return `https://benjaminaster.github.io/gallery/Sophia_${num}_rund.png`;
 	},
 	fog:
-		"https://raw.githubusercontent.com/BenjaminAster/Benjamin-Aster/master/stuff/gallery/fog_2.png",
+		"https://benjaminaster.github.io/gallery/fog_2.png",
 	deodorant:
-		"https://raw.githubusercontent.com/BenjaminAster/Benjamin-Aster/master/stuff/gallery/deodorant_1.png",
+		"https://benjaminaster.github.io/gallery/deodorant_1.png",
 	satchSchultasche:
-		"https://raw.githubusercontent.com/BenjaminAster/Benjamin-Aster/master/stuff/gallery/satch_schultasche_2.png",
+		"https://benjaminaster.github.io/gallery/satch_schultasche_2.png",
 	elias:
-		"https://raw.githubusercontent.com/BenjaminAster/Benjamin-Aster/master/stuff/gallery/elias_am_boxautomat_3.png",
+		"https://benjaminaster.github.io/gallery/elias_am_boxautomat_3.png",
 };
 
 let audioPaths = {
