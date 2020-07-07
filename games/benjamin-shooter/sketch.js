@@ -69,7 +69,7 @@ let imgPaths = {
 let audioPaths = {
 
 	willkommen:
-		"https://raw.githubusercontent.com/BenjaminAster/Benjamin-Aster/master/stuff/audios/willkommen_beim_benjamin_shooter_1.mp4",
+		"https://benjaminaster.github.io/audios/willkommen_beim_benjamin_shooter_1.ogg",
 }
 
 let imgs = {};
