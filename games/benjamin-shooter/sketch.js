@@ -179,7 +179,7 @@ function draw() {
 		for (let i = 0; i < enemies.length; i++) {
 			if (!enemies.updateDisabled) {
 				enemies[i].update();
-				if (enemies[i].x > width) {
+				if (enemies[i].x > width && schoolbagElias == null) {
 					gameState = gameStates.gameOver;
 				}
 			}
@@ -206,7 +206,7 @@ function draw() {
 						if (score > highScore) {
 							highScore = score;
 							cookies.setCookie("highScore", str(highScore), 365);
-							
+
 						}
 					}
 				}
@@ -231,30 +231,30 @@ function draw() {
 
 		if (gameState == gameStates.gameOver) {
 			interface.show(gameStates.gameOver);
-		} else if (gameState == gameStates.playing) {
-			fill(255);
-			stroke(0);
-			strokeWeight(5);
-			textSize(unit * 3);
-			textAlign(LEFT, TOP);
-			let infoString = `Score: ${score} ● High Score: ${highScore}`;
-			if (deodorant != null) {
-				infoString += ` ● Deodorant (D): /`;
-			} else if (frameCount - deodorantSpan >= prevDeodorant) {
-				infoString += ` ● Deodorant (D): 0s`;
-			} else {
-				infoString += ` ● Deodorant (D): ${int((prevDeodorant + deodorantSpan - frameCount) / frameRate)}s`;
-			}
-			if (schoolbagElias != null) {
-				infoString += ` ● Schultasche (S): /`;
-			} else if (frameCount - schoolbagEliasSpan >= prevSchoolbagElias) {
-				infoString += ` ● Schultasche (S): 0s`;
-			} else {
-				infoString += ` ● Schultasche (S): ${int((prevSchoolbagElias + schoolbagEliasSpan - frameCount) / frameRate)}s`;
-			}
-
-			text(infoString, unit, unit);
 		}
+
+		fill(255);
+		stroke(0);
+		strokeWeight(5);
+		textSize(unit * 3);
+		textAlign(LEFT, TOP);
+		let infoString = `Score: ${score} ● High Score: ${highScore}`;
+		if (deodorant != null) {
+			infoString += ` ● Deo (D): ✖`;
+		} else if (frameCount - deodorantSpan >= prevDeodorant) {
+			infoString += ` ● Deo (D): ✔`;
+		} else {
+			infoString += ` ● Deo (D): ${ceil((prevDeodorant + deodorantSpan - frameCount) / frameRate)}s`;
+		}
+		if (schoolbagElias != null) {
+			infoString += ` ● Schultasche (S): ✖`;
+		} else if (frameCount - schoolbagEliasSpan >= prevSchoolbagElias) {
+			infoString += ` ● Schultasche (S): ✔`;
+		} else {
+			infoString += ` ● Schultasche (S): ${ceil((prevSchoolbagElias + schoolbagEliasSpan - frameCount) / frameRate)}s`;
+		}
+
+		text(infoString, unit, unit);
 	}
 
 	if (gameState != gameStates.playing) {

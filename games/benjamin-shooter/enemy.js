@@ -1,7 +1,7 @@
 function Enemy() {
 	let overlapping = false;
 
-	let vx = unit * 10 / frameRate;
+	let vx;
 
 	this.x;
 	this.y;
@@ -27,6 +27,7 @@ function Enemy() {
 
 
 	this.update = function () {
+		vx = unit * (10 + frameCount / frameRate / 20) / frameRate;
 		this.x += vx;
 	}
 
