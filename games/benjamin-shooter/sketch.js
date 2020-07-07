@@ -64,6 +64,10 @@ let imgPaths = {
 		"https://benjaminaster.github.io/gallery/satch_schultasche_2.png",
 	elias:
 		"https://benjaminaster.github.io/gallery/elias_am_boxautomat_3.png",
+	matisse:
+		"https://benjaminaster.github.io/gallery/matisse_turban_1.png",
+	megaphone:
+		"https://benjaminaster.github.io/gallery/megaphone_1.png",
 };
 
 let audioPaths = {
