@@ -206,6 +206,7 @@ function draw() {
 						if (score > highScore) {
 							highScore = score;
 							cookies.setCookie("highScore", str(highScore), 365);
+							
 						}
 					}
 				}
