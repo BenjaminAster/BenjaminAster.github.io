@@ -54,7 +54,7 @@ let imgPaths = {
 	satchFederpennal:
 		"https://benjaminaster.github.io/gallery/satch_federpennal.png",
 	sophiaRund: function (num) {
-		return `https://benjaminaster.github.io/gallery/Sophia_${num}_rund.png`;
+		return `https://benjaminaster.github.io/gallery/sophia_${num}_rund.png`;
 	},
 	fog:
 		"https://benjaminaster.github.io/gallery/fog_2.png",
