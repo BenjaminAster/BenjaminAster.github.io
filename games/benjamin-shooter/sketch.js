@@ -106,7 +106,7 @@ function setup() {
 														elementsLoaded++;
 														getAudioContext().suspend();
 														audios.willkommen.play();
-														audios.willkommen.setVolume(0.05);
+														audios.willkommen.setVolume(1);
 													});
 												});
 											});
