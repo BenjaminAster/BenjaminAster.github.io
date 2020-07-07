@@ -5,6 +5,8 @@ let unit;
 let shooter;
 
 let score = 0;
+let highScore;
+let cookies;
 //let gameOver = true;
 let gameStates = {
 	start: 0,
@@ -124,6 +126,10 @@ function setup() {
 
 	createCanvas(windowWidth, windowHeight);
 
+	cookies = new Cookies();
+	highScore = cookies.getCookie("highScore");
+
+	(highScore == "") ? highScore = 0 : highScore = parseInt(highScore);
 
 	if (navigator.appVersion.indexOf("Mac") != -1)
 		fontFamily = "Trebuchet MS";
@@ -195,7 +201,13 @@ function draw() {
 				enemies[collision].size -= unit * 4;
 				if (enemies[collision].size <= unit * 8) {
 					enemies.splice(collision, 1);
-					if (gameState == gameStates.playing) score++;
+					if (gameState == gameStates.playing) {
+						score++;
+						if (score > highScore) {
+							highScore = score;
+							cookies.setCookie("highScore", str(highScore), 365);
+						}
+					}
 				}
 				balls.splice(i, 1);
 			} else {
@@ -224,7 +236,7 @@ function draw() {
 			strokeWeight(5);
 			textSize(unit * 3);
 			textAlign(LEFT, TOP);
-			let infoString = `Sophias vernichtet: ${score}`;
+			let infoString = `Score: ${score} ● High Score: ${highScore}`;
 			if (deodorant != null) {
 				infoString += ` ● Deodorant (D): /`;
 			} else if (frameCount - deodorantSpan >= prevDeodorant) {
