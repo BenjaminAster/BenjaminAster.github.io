@@ -8,7 +8,7 @@ function Interface() {
 		restartBttn.style("font-family", fontFamily);
 		restartBttn.style("font-family", fontFamily);
 		//restartBttn.position(0, 0);
-		restartBttn.showing = true;
+		restartBttn.showing = false;
 
 		restartBttn.mouseOver(function () {
 			this.style("background-color", "white");
@@ -95,8 +95,6 @@ function Interface() {
 
 	this.show = function (when) { // when: either "start", "pauss" or "gameOver"
 
-		restartBttn.show();
-		restartBttn.showing = true;
 
 		textAlign(CENTER, TOP);
 
@@ -124,9 +122,9 @@ function Interface() {
 			enemies.prevSpawn = frameCount;
 			enemies.randSpawnSpan = frameRate;
 			deodorant = null;
-			deodorantSpan = frameRate*30;
+			deodorantSpan = frameRate * 30;
 			schoolbagElias = null;
-			schoolbagEliasSpan = frameRate*30;
+			schoolbagEliasSpan = frameRate * 30;
 			interface.playing();
 		});
 
@@ -135,6 +133,8 @@ function Interface() {
 			fill(0, 140);
 			noStroke();
 			rect(0, 0, width, height);
+			restartBttn.show();
+			restartBttn.showing = true;
 			restartBttn.html("Neues Spiel starten");
 		} else {
 			strokeWeight(unit * 1);
@@ -146,6 +146,10 @@ function Interface() {
 			text("Du wolltest schon immer mit Federpennalen auf eine Herde wilder Sophias schießen?\n" +
 				"Dann geht dein Wunsch mit diesem Spiel nun in Erfüllung!\n" +
 				"Du kannst das Spiel jederzeit mit Leertaste oder dem Button oben rechts pausieren.", width / 2, height * 7.0 / 16);
+			if (elementsLoaded == elementsCount) {
+				restartBttn.show();
+				restartBttn.showing = true;
+			}
 		}
 
 		if (when == gameStates.paused) {

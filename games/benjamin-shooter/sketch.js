@@ -74,6 +74,7 @@ let audioPaths = {
 
 let imgs = {};
 let audios = {};
+let volume = 0.5;
 
 function preload() {
 }
@@ -107,8 +108,7 @@ function setup() {
 													audios.willkommen = loadSound(audioPaths.willkommen, successCallback = function () {
 														elementsLoaded++;
 														getAudioContext().suspend();
-														audios.willkommen.play();
-														audios.willkommen.setVolume(1);
+														masterVolume(volume);
 													});
 												});
 											});
@@ -274,13 +274,14 @@ function draw() {
 	}
 
 	if (elementsLoaded != elementsCount) {
-		textAlign(RIGHT, BOTTOM);
+		textAlign(CENTER, TOP);
+		textSize(unit * 6);
 		let loadingBar = "[";
 		for (let i = 0; i < elementsCount; i++) {
 			(i < elementsLoaded) ? loadingBar = loadingBar + "▮" : loadingBar = loadingBar + "▯";
 		}
 		loadingBar = loadingBar + "]";
-		text(`Loading media elements: ${loadingBar}`, width - unit, height - unit);
+		text(loadingBar, width / 2, height * 10 / 16);
 	}
 }
 
@@ -312,5 +313,16 @@ function keyPressed() {
 	}
 	if (key == 'm') {
 		userStartAudio();
+		(audios.willkommen.isPlaying()) ? audios.willkommen.pause() : audios.willkommen.play();
+	}
+	if (key == '+') {
+		volume *= 1.2
+		volume = constrain(volume, 0, 1);
+		masterVolume(volume);
+	}
+	if (key == '-') {
+		volume /= 1.2
+		volume = constrain(volume, 0, 1);
+		masterVolume(volume);
 	}
 }
