@@ -50,34 +50,34 @@ let frameRate;
 
 let imgPaths = {
 	akadGym:
-		"https://benjaminaster.github.io/gallery/akadgym_dunkel_verschwommen.jpg",
+		"https://benjaminaster.github.io/gallery/akadgym-dunkel-verschwommen.jpg",
 	benjaminShooter:
-		"https://benjaminaster.github.io/gallery/benjamin_shooter_v03.png",
+		"https://benjaminaster.github.io/gallery/benjamin-shooter.png",
 	benjaminShooterRH:
-		"https://benjaminaster.github.io/gallery/benjamin_shooter_v03_rechte_haelfte.png",
+		"https://benjaminaster.github.io/gallery/benjamin-shooter-rechte-haelfte.png",
 	satchFederpennal:
-		"https://benjaminaster.github.io/gallery/satch_federpennal.png",
+		"https://benjaminaster.github.io/gallery/satch-federpennal.png",
 	sophiaRund: function (num) {
-		return `https://benjaminaster.github.io/gallery/sophia_${num}_rund.png`;
+		return `https://benjaminaster.github.io/gallery/sophia-rund-${num}.png`;
 	},
 	fog:
-		"https://benjaminaster.github.io/gallery/fog_2.png",
+		"https://benjaminaster.github.io/gallery/fog.png",
 	deodorant:
-		"https://benjaminaster.github.io/gallery/deodorant_1.png",
+		"https://benjaminaster.github.io/gallery/deodorant.png",
 	satchSchultasche:
-		"https://benjaminaster.github.io/gallery/satch_schultasche_2.png",
+		"https://benjaminaster.github.io/gallery/satch-schultasche.png",
 	elias:
-		"https://benjaminaster.github.io/gallery/elias_am_boxautomat_3.png",
+		"https://benjaminaster.github.io/gallery/elias-am-boxautomat.png",
 	matisse:
-		"https://benjaminaster.github.io/gallery/matisse_turban_1.png",
+		"https://benjaminaster.github.io/gallery/matisse-turban.png",
 	megaphone:
-		"https://benjaminaster.github.io/gallery/megaphone_1.png",
+		"https://benjaminaster.github.io/gallery/megaphone.png",
 };
 
 let audioPaths = {
 
 	willkommen:
-		"https://benjaminaster.github.io/audios/willkommen_beim_benjamin_shooter_1.ogg",
+		"https://benjaminaster.github.io/audios/willkommen-beim-benjamin-shooter.ogg",
 }
 
 let imgs = {};
@@ -97,13 +97,13 @@ function setup() {
 				imgs.satchFederpennal = loadImage(imgPaths.satchFederpennal, successCallback = function () {
 					elementsLoaded++;
 					imgs.sophiaRund = [];
-					imgs.sophiaRund[0] = loadImage(imgPaths.sophiaRund(1), successCallback = function () {
+					imgs.sophiaRund[0] = loadImage(imgPaths.sophiaRund(0), successCallback = function () {
 						elementsLoaded++;
-						imgs.sophiaRund[1] = loadImage(imgPaths.sophiaRund(2), successCallback = function () {
+						imgs.sophiaRund[1] = loadImage(imgPaths.sophiaRund(1), successCallback = function () {
 							elementsLoaded++;
-							imgs.sophiaRund[2] = loadImage(imgPaths.sophiaRund(3), successCallback = function () {
+							imgs.sophiaRund[2] = loadImage(imgPaths.sophiaRund(2), successCallback = function () {
 								elementsLoaded++;
-								imgs.sophiaRund[3] = loadImage(imgPaths.sophiaRund(4), successCallback = function () {
+								imgs.sophiaRund[3] = loadImage(imgPaths.sophiaRund(3), successCallback = function () {
 									elementsLoaded++;
 									imgs.fog = loadImage(imgPaths.fog, successCallback = function () {
 										elementsLoaded++;
