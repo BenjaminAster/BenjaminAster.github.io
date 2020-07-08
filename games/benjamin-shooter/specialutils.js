@@ -193,9 +193,9 @@ function MegaphoneMatisse() {
 	}
 	let megaphoneImg = {
 		img: imgs.megaphone,
-		relX: 0.0,
-		relY: 0.3,
-		rot: 0, //-PI / 8,
+		relX: -0.07,
+		relY: 0.36,
+		rot: -PI / 6,
 		rotSpeed: PI / 256.0,
 		size: unit * 25,
 	}
