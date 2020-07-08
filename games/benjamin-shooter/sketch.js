@@ -71,7 +71,7 @@ let imgPaths = {
 	matisse:
 		"https://benjaminaster.github.io/gallery/matisse-turban.png",
 	megaphone:
-		"https://benjaminaster.github.io/gallery/megaphone.png",
+		"https://benjaminaster.github.io/gallery/megaphone-1.png",
 };
 
 let audioPaths = {
