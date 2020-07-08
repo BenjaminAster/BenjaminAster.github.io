@@ -1,10 +1,10 @@
 
 
-function Ball(powerMode) {
+function Ball() {
 	this.x = shooter.x
 	this.y = shooter.y
 
-	this.powerMode = false;
+	//this.powerMode = false;
 
 	let img = {}
 	img.img = imgs.satchFederpennal;
@@ -14,7 +14,7 @@ function Ball(powerMode) {
 
 	this.size = unit * 6;
 	this.vx = unit * 50 / frameRate;
-	if (powerMode) this.vx *= 2;
+	//if (powerMode) this.vx *= 2;
 
 
 	this.update = function () {

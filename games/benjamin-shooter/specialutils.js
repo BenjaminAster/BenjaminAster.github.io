@@ -202,7 +202,7 @@ function MegaphoneMatisse() {
 
 	let x = matisseImg.relX * matisseImg.size;
 	let y = height + matisseImg.relY * matisseImg.size;
-	let vy = 30 * unit / frameRate;
+	let vy = 80 * unit / frameRate;
 
 
 	this.update = function () {

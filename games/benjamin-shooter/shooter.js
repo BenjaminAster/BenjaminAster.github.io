@@ -29,13 +29,19 @@ function Shooter() {
 
 	this.shoot = function () {
 
-		balls.push(new Ball( /*this.x, this.y,*/ this.powerModeEnabled));
+		balls.push(new Ball());
+		if (this.powerModeEnabled) balls[balls.length - 1].powerMode(true);
 		this.prevShoot = frameCount;
 	}
 
 	this.powerMode = function (enable) {
 		this.powerModeEnabled = enable;
 		this.shootSpan *= (enable) ? 1 / 6 : 6;
+		if (enable) {
+			for (let i in balls) {
+				balls[i].powerMode(enable);
+			}
+		}
 	}
 }
 
