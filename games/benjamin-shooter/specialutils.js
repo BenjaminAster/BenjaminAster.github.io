@@ -182,7 +182,7 @@ function MegaphoneMatisse() {
 	let state = states.in;
 
 	let shakeStart;
-	let shakeDur = frameRate * 5;
+	let shakeDur = frameRate * 7;
 	let shakeSpan = frameRate * 4 / 4;
 
 	let matisseImg = {
