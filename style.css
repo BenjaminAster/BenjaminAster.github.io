@@ -1,9 +1,9 @@
 html, body {
 	background-color: #111;
 	color: #fff;
-  margin: 5px;
+  margin: 10px;
 	border: none;
-  padding: 5px;
+  padding: none;
   font-family: Roboto, sans-serif;
 }
 
@@ -17,10 +17,3 @@ a:link, a:visited {
   text-decoration: underline;
   cursor: pointer;
 }
-
-/*
-
-a:link:active, a:visited:active {
-  color: red;
-}
-*/

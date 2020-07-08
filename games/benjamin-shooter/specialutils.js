@@ -24,7 +24,7 @@ function Deodorant() {
 		relY: 0.75,
 		size: 0,
 		startTime: undefined,
-		scaling: 200 * unit / frameRate,
+		scaling: 500 * unit / frameRate,
 		show: false
 	}
 

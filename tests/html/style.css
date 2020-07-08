@@ -1,8 +1,8 @@
 html, body {
-	background-color: #111;
-	color: #ddd;
+  background-color: #111;
+  color: #ddd;
   margin: 5px;
-	border: 1px solid #333;
+  border: 1px solid #333;
   padding: 10px;
   font-family: Roboto, sans-serif;
 }
@@ -11,3 +11,8 @@ canvas {
   display: block;
 }
 
+a:link, a:visited {
+  color: dodgerBlue;
+  text-decoration: underline;
+  cursor: pointer;
+}
