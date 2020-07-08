@@ -15,7 +15,7 @@ a:link, a:visited {
   color: dodgerBlue;
   
   text-decoration: underline;
-  cursor: auto;
+  cursor: pointer;
 }
 
 /*
