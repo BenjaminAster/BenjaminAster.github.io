@@ -24,8 +24,8 @@ function setup() {
 		for (let i = 0; i < ids.length; i++) {
 			getTitle(`https://youtube.com/embed/${ids[i]}`, successCallback = function (title) {
 				titles[i] = title.substring(0, title.length - 10);
-				document.querySelector(".urls").innerHTML += 
-					`<li> <a href="https://www.youtube.com/watch?v=${ids[i]}"> https://www.youtube.com/watch?v=${ids[i]} </a> &#9472 ${titles[i]} </li>\n`;
+				document.querySelector(".urls").innerHTML +=
+					`<li> <div class="url"><a href="https://www.youtube.com/watch?v=${ids[i]}"> https://www.youtube.com/watch?v=${ids[i]}</a></div> &#9472 <div class="title">${titles[i]}</div></li>\n`;
 			});
 		}
 	});

@@ -18,6 +18,10 @@ a:link, a:visited {
   cursor: pointer;
 }
 
-.urls {
+.url {
   font-family: Roboto Mono;
+}
+
+.title {
+  color: pink;
 }
