@@ -7,7 +7,7 @@ let HTMLString = "";
 function getTitle(url, successCallback = function () { }) {
 	let title = "ERROR";
 	$.ajax({
-		url: `http://textance.herokuapp.com/title/${url}`,
+		url: `https://textance.herokuapp.com/title/${url}`,
 		complete: function (data) {
 			title = data.responseText;
 			successCallback(title);
