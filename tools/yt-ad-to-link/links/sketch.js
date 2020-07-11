@@ -5,7 +5,7 @@ let titles;
 let HTMLString = "";
 
 function getTitle(url, successCallback = function () { }) {
-	let title = "blablabla";
+	let title = "ERROR";
 	$.ajax({
 		url: `http://textance.herokuapp.com/title/${url}`,
 		complete: function (data) {
@@ -16,7 +16,7 @@ function getTitle(url, successCallback = function () { }) {
 }
 
 function setup() {
-	ids = loadStrings("https://benjaminaster.github.io/tools/yt-ad-to-link/links/unlisted-ad-links.txt", success = function () {
+	ids = loadStrings("unlisted-ad-links.txt", success = function () {
 		ids.forEach(function (item, index) {
 			ids[index] = item.substring(32, item.length);
 		});
