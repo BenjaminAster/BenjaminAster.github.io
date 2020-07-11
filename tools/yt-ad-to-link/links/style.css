@@ -4,7 +4,7 @@ html, body {
   margin: 5px;
   border: none;
   padding: 5px;
-  font-family: Roboto;
+  font-family: Roboto, sans-serif;
 }
 
 canvas {
@@ -18,5 +18,5 @@ a:link, a:visited {
 }
 
 .url {
-  font-family: Roboto Mono;
+  font-family: Roboto Mono, monospace;
 }
