@@ -1,0 +1,45 @@
+html, body {
+  background-color: #111;
+  color: white;
+  margin: 1vw;
+  border: none;
+  padding: none;
+  font-family: Roboto, sans-serif;
+}
+
+canvas {
+  display: block;
+}
+
+a:link, a:visited {
+  color: dodgerBlue;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+textarea {
+  outline: none;
+  resize: none;
+  background-color: transparent;
+  color: white;
+  font-size: 4vh;
+  vertical-align: middle;
+  font-family: Roboto, sans-serif;
+  padding-left: 1vh;
+  padding-right: 1vh;
+  height: 15vh;
+  width: 94vw;
+  border-color: deepSkyBlue;
+  border-style: solid;
+  border-radius: 2vh;
+  border-width: medium;
+}
+textarea:focus {
+  box-shadow: 0 0 20px grey;
+}
+textarea::placeholder {
+  color: silver;
+}
+textarea::-webkit-scrollbar {
+  width: 0;
+}

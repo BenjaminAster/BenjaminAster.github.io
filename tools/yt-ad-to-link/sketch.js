@@ -37,12 +37,12 @@ function setup() {
   title = createElement('h2', "Loading...  If you can see this, an error occured.");
   title.position(20, 0);
   title.style("color", color(255, 255, 255));
-  title.style("font-family", "Segoe UI");
+  //title.style("font-family", "Segoe UI");
 
   infoText = createDiv("Loading...  If you can see this, an error occured.");
   infoText.position(20, AUTO);
   infoText.style("color", color(255, 255, 255));
-  infoText.style("font-family", "Segoe UI");
+  //infoText.style("font-family", "Segoe UI");
 
   textBox = createInput("");
   textBox.mousePressed(clearInput);
@@ -51,13 +51,9 @@ function setup() {
   textBox.style("border-color", color(255, 50, 0));
   textBox.style("border-style", "solid");
   textBox.style("border-radius", "6px");
-  textBox.style("font-family", "Segoe UI");
-  textBox.size(null, 30);
-  textBox.position(20, null)
-
-  copyright = createP("© 2020 Benjamin Aster");
-  copyright.style("color", color(255));
-  copyright.style("font-family", "Segoe UI");
+  //textBox.style("font-family", "Segoe UI");
+  textBox.size(null, height/10);
+  textBox.position(20, null);
 
   //linkTest = createElement("p", '<meta http-equiv="refresh" content="0; url=http://example.com/" />')
   //linkTest.position(100, 100)
@@ -96,7 +92,7 @@ function setup() {
 
   urlInfo = createDiv(urlInfoText)
   urlInfo.style("color", color(255, 255, 255));
-  urlInfo.style("font-family", "Segoe UI");
+  //urlInfo.style("font-family", "Segoe UI");
   urlInfo.hide();
 
   languageSelect = createSelect();
@@ -110,14 +106,11 @@ function setup() {
 
   languageSelect.changed(function () {
     language = languageSelect.value();
-    print(language);
     updateText();
   });
 
   updateText();
   windowResized();
-  
-  print(test3);
   
 
 }
@@ -191,8 +184,6 @@ function windowResized() {
   textBox.size(width - 40);
   textBox.position(null, infoText.position().y + infoText.height + 15);
 
-  copyright.position(20, height - 55);
-
   urlInfo.position(20, textBox.position().y + textBox.size().height + 10);
 
   buttonOpenNewTab.position(20, textBox.position().y + textBox.size().height + urlInfo.size().height + 20);
@@ -224,23 +215,3 @@ function updateText() {
 
   windowResized();
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//
