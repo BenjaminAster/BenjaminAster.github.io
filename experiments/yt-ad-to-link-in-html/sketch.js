@@ -44,7 +44,8 @@ function setup() {
 	document.getElementById("open-automatically").onclick = function () {
 		let checked = document.getElementById("open-automatically").checked;
 		openAutomatically = checked;
-		setCookie("open-ad-link-automatically", checked, 365);
+		setCookie("open-ad-link-automatically", str(checked), 365);
+		document.getElementById("debug-info-textarea").focus();
 	};
 }
 
