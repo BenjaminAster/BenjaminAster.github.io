@@ -21,7 +21,15 @@ let debugInfo;
 let prevFocused;
 
 let openAutomatically = (getCookie("open-ad-link-automatically") == "true");
-console.log(getCookie("highScore"));
+
+document.getElementById("open-automatically").checked = openAutomatically;
+
+document.getElementById("open-automatically").onclick = function () {
+	let checked = document.getElementById("open-automatically").checked;
+	openAutomatically = checked;
+	setCookie("open-ad-link-automatically", str(checked), 365);
+	document.getElementById("debug-info-textarea").focus();
+};
 
 function createUrl() {
 	debugInfo = document.getElementById("debug-info-textarea").value;
@@ -38,18 +46,6 @@ function createUrl() {
 			}
 		}
 	}
-}
-
-function setup() {
-	openAutomatically = (getCookie("open-ad-link-automatically") == "true");
-	
-	document.getElementById("open-automatically").onclick = function () {
-		let checked = document.getElementById("open-automatically").checked;
-		openAutomatically = checked;
-		setCookie("open-ad-link-automatically", str(checked), 365);
-		document.getElementById("debug-info-textarea").focus();
-		setCookie("testCookie", "blablabla", 365);
-	};
 }
 
 function draw() {
