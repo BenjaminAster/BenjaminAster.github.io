@@ -20,8 +20,8 @@ let prevDebugInfo;
 let debugInfo;
 let prevFocused;
 
-let openAutomatically = getCookie("open-ad-link-automatically");
-console.log(getCookie("highscore"));
+let openAutomatically = (getCookie("open-ad-link-automatically") == "true");
+console.log(getCookie("highScore"));
 
 function createUrl() {
 	debugInfo = document.getElementById("debug-info-textarea").value;

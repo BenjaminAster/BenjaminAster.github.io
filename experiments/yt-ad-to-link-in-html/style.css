@@ -57,3 +57,16 @@ textarea::-webkit-scrollbar {
   position: fixed;
   bottom: 0;
 }
+
+input[type="checkbox"]{
+  /*display: none;*/
+}
+
+input[type="checkbox"] + label::before{
+  background-color: Chartreuse;
+}
+
+input[type="checkbox"]:checked + label::before{
+  box-shadow: inset 0 0 0 3px #fff;
+  background-color: red;
+}
