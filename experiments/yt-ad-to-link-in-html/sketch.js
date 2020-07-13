@@ -46,6 +46,7 @@ function setup() {
 		openAutomatically = checked;
 		setCookie("open-ad-link-automatically", str(checked), 365);
 		document.getElementById("debug-info-textarea").focus();
+		setCookie("testCookie", "blablabla", 365);
 	};
 }
 
