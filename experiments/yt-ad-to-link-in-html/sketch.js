@@ -20,7 +20,8 @@ let prevDebugInfo;
 let debugInfo;
 let prevFocused;
 
-let openAutomatically;
+let openAutomatically = getCookie("open-ad-link-automatically");
+console.log(getCookie("highscore"));
 
 function createUrl() {
 	debugInfo = document.getElementById("debug-info-textarea").value;
@@ -41,8 +42,9 @@ function createUrl() {
 
 function setup() {
 	document.getElementById("open-automatically").onclick = function () {
-		//openAutomatically
-		console.log("checkbox clicked");
+		let checked = document.getElementById("open-automatically").checked;
+		openAutomatically = checked;
+		setCookie("open-ad-link-automatically", checked, 365);
 	};
 }
 
