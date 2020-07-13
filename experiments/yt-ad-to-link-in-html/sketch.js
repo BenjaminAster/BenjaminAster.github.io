@@ -18,7 +18,7 @@ let url = "";
 let prevUrl = "";
 let prevDebugInfo;
 let debugInfo;
-let prevFocused;
+let prevFocused = false;
 
 let openAutomatically = (getCookie("open-ad-link-automatically") == "true");
 
