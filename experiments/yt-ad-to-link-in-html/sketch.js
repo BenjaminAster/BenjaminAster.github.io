@@ -41,6 +41,8 @@ function createUrl() {
 }
 
 function setup() {
+	openAutomatically = (getCookie("open-ad-link-automatically") == "true");
+	
 	document.getElementById("open-automatically").onclick = function () {
 		let checked = document.getElementById("open-automatically").checked;
 		openAutomatically = checked;
