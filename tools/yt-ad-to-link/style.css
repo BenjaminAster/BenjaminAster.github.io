@@ -80,7 +80,7 @@ button {
 
 #button-copy {
   height: 4.5vh;
-  width: fit-content;
+  width: 10vh;
 }
 
 button:hover {

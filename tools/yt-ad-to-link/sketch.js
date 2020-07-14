@@ -1,16 +1,4 @@
 
-/*
-document.querySelector("#url").innerHTML = `<a href="https://example.com">example</a>`;
-
-console.log("testtest");
-
-
-document.querySelector("#button-1").innerHTML = `<button onclick='window.open("https://example.com", "_blank")'>example</a>`;
-document.querySelector("#button-2").innerHTML = `<button onclick='window.open("https://example.com", "_blank")'>example2</a>`;
-*/
-
-// ************************************************
-
 // © 2020 Benjamin Aster
 
 
@@ -19,6 +7,9 @@ let prevUrl = "";
 let prevDebugInfo;
 let debugInfo;
 let prevFocused = false;
+let copied = false;
+let actionTaken = false;
+let title = "";
 
 let openAutomatically = (getCookie("open-ad-link-automatically") == "true");
 
@@ -31,13 +22,23 @@ document.getElementById("open-automatically").onclick = function () {
 	document.getElementById("debug-info-textarea").focus();
 };
 
+function getTitle(url, successCallback = function () { }) {
+	let title = "ERROR";
+	$.ajax({
+		url: `https://textance.herokuapp.com/title/${url}`,
+		complete: function (data) {
+			title = data.responseText;
+			successCallback(title);
+		}
+	});
+}
+
 function createUrl() {
 	debugInfo = document.getElementById("debug-info-textarea").value;
 	prevUrl = url;
 	if (debugInfo != prevDebugInfo) {
 		prevDebugInfo = debugInfo;
 		debugInfo = debugInfo.split('"');
-		url = "";
 
 		for (let i = 0; i < debugInfo.length; i++) {
 			if (debugInfo[i] == "ad_docid") {
@@ -52,16 +53,34 @@ function draw() {
 	createUrl();
 
 	if (prevUrl != url && url != "") {
+		actionTaken = false;
 		document.getElementById("url-infotext").hidden = false;
 		document.getElementById("url").innerText = url;
 		document.getElementById("url").href = url;
+
+		document.getElementById("title").innerText = "loading title...";
+		getTitle(`https://youtube.com/embed/${url.substring(32, url.length)}`, successCallback = function (_title) {
+			title = _title.substring(0, _title.length - 10);
+			document.getElementById("title").innerText = title;
+		});
+
 		document.getElementById("button-new-tab").hidden = false;
-		document.getElementById("button-new-tab").onclick = function () { window.open(url, '_blank') };
+		document.getElementById("button-new-tab").onclick = function () {
+			window.open(url, '_blank');
+			actionTaken = true;
+		};
 		document.getElementById("button-this-tab").hidden = false;
-		document.getElementById("button-this-tab").onclick = function () { window.open(url, '_self') };
+		document.getElementById("button-this-tab").onclick = function () {
+			window.open(url, '_self');
+			actionTaken = true;
+		};
 
 		document.getElementById("button-copy").hidden = false;
 		document.getElementById("button-copy").innerText = "Copy";
+		copied = false;
+		document.getElementById("button-copy").onmouseover = function () { };
+		document.getElementById("button-copy").onmouseout = function () { };
+
 		document.getElementById("button-copy").onclick = function () {
 			let el = document.createElement('textarea');
 			el.value = url;
@@ -70,6 +89,21 @@ function draw() {
 			document.execCommand('copy');
 			document.body.removeChild(el);
 			document.getElementById("button-copy").innerText = "Copied!";
+			copied = true;
+			actionTaken = true;
+
+			document.getElementById("button-copy").onmouseover = function () {
+				//document.getElementById("button-copy").style.transition = "all 2s";
+				document.getElementById("button-copy").style.whiteSpace = "nowrap";
+				document.getElementById("button-copy").innerHTML = "Copy again";
+				document.getElementById("button-copy").style.width = "16vh";
+			};
+			document.getElementById("button-copy").onmouseout = function () {
+				//document.getElementById("button-copy").style.transition = "all 2s";
+				document.getElementById("button-copy").style.whiteSpace = "nowrap";
+				document.getElementById("button-copy").innerHTML = "Copied!";
+				document.getElementById("button-copy").style.width = "12vh";
+			};
 		};
 
 		if (document.getElementById("open-automatically").checked) {
@@ -78,7 +112,9 @@ function draw() {
 	}
 	if (focused && !prevFocused) {
 		document.getElementById("debug-info-textarea").focus();
-		document.getElementById("debug-info-textarea").value = "";
+		if (actionTaken) {
+			document.getElementById("debug-info-textarea").value = "";
+		}
 	}
 
 	prevFocused = focused;
