@@ -54,9 +54,9 @@ function createUrl() {
 	}
 }
 
-function preload() {
-	links = loadStrings("./links/unlisted-ad-links.txt");
-	//links = loadStrings("https://benjaminaster.github.io/tools/yt-ad-to-link/links/unlisted-ad-links.txt");
+function setup() {
+	//links = loadStrings("./links/unlisted-ad-links.txt");
+	links = loadStrings("https://benjaminaster.github.io/tools/yt-ad-to-link/links/unlisted-ad-links.txt");
 }
 
 function draw() {
@@ -67,7 +67,7 @@ function draw() {
 
 		document.getElementById("url-infos").hidden = false;
 		document.getElementById("url-infotext").innerHTML = `The original video of the ad (${
-			(links.includes(url)) ? "already" : "not contained"
+			(links.includes(url)) ? "already" : "not yet"
 			} in <a href="./links">this</a> list):`;
 		document.getElementById("url").innerText = url;
 		document.getElementById("url").href = url;
