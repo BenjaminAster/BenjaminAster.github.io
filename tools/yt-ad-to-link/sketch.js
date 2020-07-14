@@ -20,7 +20,7 @@ let prevDebugInfo;
 let debugInfo;
 let prevFocused = false;
 
-let openAutomatically = (getCookie("open-ad-link-automatically") != "false");
+let openAutomatically = (getCookie("open-ad-link-automatically") == "true");
 
 document.getElementById("open-automatically").checked = openAutomatically;
 
