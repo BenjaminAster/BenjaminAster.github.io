@@ -127,9 +127,7 @@ function draw() {
 	}
 	if (focused && !prevFocused) {
 		document.getElementById("debug-info-textarea").focus();
-		if (actionTaken) {
-			document.getElementById("debug-info-textarea").value = "";
-		}
+		document.getElementById("debug-info-textarea").value = "";
 	}
 
 	prevFocused = focused;
