@@ -1,0 +1,19 @@
+html, body {
+	background-color: #111;
+	color: #fff;
+  margin: 10px;
+	border: none;
+  padding: none;
+  font-family: Roboto, sans-serif;
+}
+
+canvas {
+  display: block;
+}
+
+a:link, a:visited {
+  color: dodgerBlue;
+  
+  text-decoration: underline;
+  cursor: pointer;
+}
