@@ -20,7 +20,7 @@ let prevDebugInfo;
 let debugInfo;
 let prevFocused = false;
 
-let openAutomatically = (getCookie("open-ad-link-automatically") == "true");
+let openAutomatically = (getCookie("open-ad-link-automatically") != "false");
 
 document.getElementById("open-automatically").checked = openAutomatically;
 
@@ -56,11 +56,12 @@ function draw() {
 		document.getElementById("url").innerText = url;
 		document.getElementById("url").href = url;
 		document.getElementById("button-new-tab").hidden = false;
-		document.getElementById("button-new-tab").onclick = function () { window.open('https://example.com', '_blank') };
+		document.getElementById("button-new-tab").onclick = function () { window.open(url, '_blank') };
 		document.getElementById("button-this-tab").hidden = false;
-		document.getElementById("button-this-tab").onclick = function () { window.open('https://example.com', '_self') };
+		document.getElementById("button-this-tab").onclick = function () { window.open(url, '_self') };
 
 		document.getElementById("button-copy").hidden = false;
+		document.getElementById("button-copy").innerText = "Copy";
 		document.getElementById("button-copy").onclick = function () {
 			let el = document.createElement('textarea');
 			el.value = url;
@@ -68,7 +69,7 @@ function draw() {
 			el.select();
 			document.execCommand('copy');
 			document.body.removeChild(el);
-			document.getElementById("button-copy").innerHTML = "Copied!";
+			document.getElementById("button-copy").innerText = "Copied!";
 		};
 
 		if (document.getElementById("open-automatically").checked) {
@@ -77,6 +78,7 @@ function draw() {
 	}
 	if (focused && !prevFocused) {
 		document.getElementById("debug-info-textarea").focus();
+		document.getElementById("debug-info-textarea").value = "";
 	}
 
 	prevFocused = focused;

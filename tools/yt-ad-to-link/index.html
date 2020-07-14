@@ -1,19 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-		<title>YouTube Ad to Video Link</title>
-		<link rel="shortcut icon" type="image/x-icon" href="https://benjaminaster.github.io/icons/youtube-link.ico">
 
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.0.0/p5.js"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
-		
-    <link rel="stylesheet" type="text/css" href="style.css">
-    <meta charset="utf-8" />
+<head>
+	<title>YT ad to link in HTML test</title>
+	<link rel="shortcut icon" type="image/x-icon" href="https://benjaminaster.github.io/icons/green-circle.ico">
 
-  </head>
-  <body>
-    <script src="sketch.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.0.0/p5.js"></script>
+	<script src="https://benjaminaster.github.io/utils/cookies.js"></script>
 
-    <p class="bottom"> © 2020 Benjamin Aster – View over 200 unlisted ad links <a href="./links">here</a>. </p>
-  </body>
+	<link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<meta charset="utf-8" />
+</head>
+
+<body>
+
+	<h2>YouTube ad link generator</h2>
+	<p>Right click on an ad and select "Copy debug info".
+		Paste it into this Textbox and press enter to get the link of the original,
+		mostly unlisted video of the ad.</p>
+
+	<p>You can view a list of over 200 unlisted ad links <a href="./links">here</a></p>
+	<textarea id="debug-info-textarea" placeholder="Paste your debug info here." spellcheck="false"></textarea>
+
+	<div style="margin-top: 1.5vh">
+		<input type="checkbox" class="checkbox" id="open-automatically">
+		<label for="open-automatically">Open link automatically</label>
+	</div>
+
+	<p hidden=true id="url-infotext">The original URL of the video ad: <nobr><a id="url"></a></nobr>
+		<button hidden=true id="button-copy">Copy</button>
+	</p>
+
+	<button hidden=true class="button-open" id="button-new-tab">Open in new tab</button>
+	<button hidden=true class="button-open" id="button-this-tab">Open in this tab</button>
+
+	<p class="bottom">© 2020 Benjamin Aster</p>
+
+	<script src="sketch.js"></script>
+</body>
+
 </html>
