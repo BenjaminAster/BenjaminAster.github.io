@@ -10,6 +10,7 @@ let prevFocused = false;
 let copied = false;
 let actionTaken = false;
 let title = "";
+let links = [];
 
 let openAutomatically = (getCookie("open-ad-link-automatically") == "true");
 
@@ -21,6 +22,10 @@ document.getElementById("open-automatically").onclick = function () {
 	setCookie("open-ad-link-automatically", str(checked), 365);
 	document.getElementById("debug-info-textarea").focus();
 };
+
+document.getElementById("debug-info-textarea").ondblclick = function () {
+	this.value = "";
+}
 
 function getTitle(url, successCallback = function () { }) {
 	let title = "ERROR";
@@ -49,12 +54,21 @@ function createUrl() {
 	}
 }
 
+function preload() {
+	links = loadStrings("./links/unlisted-ad-links.txt");
+	//links = loadStrings("https://benjaminaster.github.io/tools/yt-ad-to-link/links/unlisted-ad-links.txt");
+}
+
 function draw() {
 	createUrl();
 
 	if (prevUrl != url && url != "") {
 		actionTaken = false;
-		document.getElementById("url-infotext").hidden = false;
+
+		document.getElementById("url-infos").hidden = false;
+		document.getElementById("url-infotext").innerHTML = `The original video of the ad (${
+			(links.includes(url)) ? "already" : "not contained"
+			} in <a href="./links">this</a> list):`;
 		document.getElementById("url").innerText = url;
 		document.getElementById("url").href = url;
 
@@ -88,25 +102,26 @@ function draw() {
 			el.select();
 			document.execCommand('copy');
 			document.body.removeChild(el);
-			document.getElementById("button-copy").innerText = "Copied!";
+			this.innerText = "Copied!";
 			copied = true;
 			actionTaken = true;
 
 			document.getElementById("button-copy").onmouseover = function () {
 				//document.getElementById("button-copy").style.transition = "all 2s";
-				document.getElementById("button-copy").style.whiteSpace = "nowrap";
-				document.getElementById("button-copy").innerHTML = "Copy again";
-				document.getElementById("button-copy").style.width = "16vh";
+				this.style.whiteSpace = "nowrap";
+				this.innerHTML = "Copy again";
+				this.style.width = "16vh";
 			};
 			document.getElementById("button-copy").onmouseout = function () {
 				//document.getElementById("button-copy").style.transition = "all 2s";
-				document.getElementById("button-copy").style.whiteSpace = "nowrap";
-				document.getElementById("button-copy").innerHTML = "Copied!";
-				document.getElementById("button-copy").style.width = "12vh";
+				this.style.whiteSpace = "nowrap";
+				this.innerHTML = "Copied!";
+				this.style.width = "12vh";
 			};
 		};
 
 		if (document.getElementById("open-automatically").checked) {
+			actionTaken = true;
 			window.open(url, "_blank");
 		}
 	}
