@@ -12,7 +12,7 @@ canvas {
 }
 
 a:link, a:visited {
-  color: dodgerBlue;
+  color: #9bf;
   text-decoration: underline;
   cursor: pointer;
 }
