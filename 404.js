@@ -1,15 +1,34 @@
 
 let unit;
 
-//let notFoundStr = "THE PAGE YOU WERE LOOKING FOR WAS NOT FOUND";
 let notFoundStr = "THE PAGE YOU WERE LOOKING FOR WAS NOT FOUND";
-let easterEggStr = "EASTEREGG";
+
+let wordChains = [
+	"EASTEREGG",
+	"PENIS",
+	"TREE",
+	"SNAKE",
+	"PONG",
+	"TETRIS",
+	"SHOOTER",
+];
+let wordChainTexts = [
+	`Congratulations, you found the easter egg!<br>That won't help you in your later life.`,
+	`HAHAHA you are so funny!<br>You have absolutely no hobbies!`,
+	`Wow, a tree!`,
+	`You can play snake at<br><a href="https://benjaminaster.github.io/games/snake">benjaminaster.github.io/games/snake</a>`,
+	`You can play pong at<br><a href="https://benjaminaster.github.io/games/pong">benjaminaster.github.io/games/pong</a>`,
+	`You can play tetris at<br><a href="https://benjaminaster.github.io/games/tetris">benjaminaster.github.io/games/tetris</a>`,
+	`You can play Benjamin Shooter at<br><a href="https://benjaminaster.github.io/games/benjamin-shooter">benjaminaster.github.io/games/benjamin-shooter</a>`,
+];
+let wordChainFound = null;
+let prevWordChainFound = null;
+
 let boxSize;
 let boxes = [];
 
 let gridWidth = notFoundStr.length + 2;
 
-let easterEggFound = false;
 
 function setup() {
 	createCanvas(windowWidth, windowHeight);
@@ -36,6 +55,7 @@ function draw() {
 		boxes[i].show();
 	}
 
+	wordChainFound = null;
 	for (let i in boxes) {
 		let boxNr = i;
 		let chain = boxes[i].letter;
@@ -43,23 +63,26 @@ function draw() {
 			boxNr = boxes[boxNr].rightNeighbor;
 			chain += boxes[boxNr].letter;
 		}
-		if (chain == easterEggStr) {
-			easterEggFound = true;
+		for (let j in wordChains) {
+			if (chain == wordChains[j]) {
+				wordChainFound = j;
+			}
 		}
 	}
 
-	if (easterEggFound) {
+	if (wordChainFound != null) {
 		noStroke();
 		fill(0, 0, 0, 0xbb);
 		rect(0, 0, width, height);
 
-		strokeWeight(unit / 3);
-		stroke("black");
-		fill("white");
-		textAlign(CENTER, CENTER);
-		textSize(unit * 4);
-		text("Congratulations, you found the easter egg!\nThat won't help you in your later life.", width / 2, height / 2);
+		if (wordChainFound != prevWordChainFound) {
+			document.getElementById("infotext").innerHTML = wordChainTexts[wordChainFound];
+		}
+	} else {
+		document.getElementById("infotext").innerHTML = "";
 	}
+
+	prevWordChainFound = wordChainFound;
 }
 
 function windowResized() {

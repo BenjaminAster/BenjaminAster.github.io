@@ -22,20 +22,16 @@ function Box(letter, pos) {
 				this.moving = false;
 			}
 		}
-		let numRightNeighbors = 0;
+		this.rightNeighbor = null;
 		for (let i in boxes) {
 			if (
-				boxes[i].ux > this.ux + 0.7 && boxes[i].ux < this.ux + (this.letter == "R" ? 2.3 : 1.3) &&
+				boxes[i].ux > this.ux + 0.7 && boxes[i].ux < this.ux + 2.3 &&
 				boxes[i].uy > this.uy - 0.3 && boxes[i].uy < this.uy + 0.3
 			) {
-				this.rightNeighbor = i;
-				numRightNeighbors++;
+				if (this.rightNeighbor == null || boxes[i].x < boxes[this.rightNeighbor].x) {
+					this.rightNeighbor = i;
+				}
 			}
-		}
-		if (numRightNeighbors != 1) {
-			this.rightNeighbor = null;
-		} else {
-			//console.log(`Right neighbor of ${this.letter}: ${boxes[this.rightNeighbor].letter}`);
 		}
 	}
 
@@ -51,7 +47,7 @@ function Box(letter, pos) {
 		fill("black");
 		noStroke();
 
-		text(this.letter, this.x + this.size / 2, this.y + this.size * 0.56)
+		text(this.letter, this.x + this.size / 2, this.y + this.size * 0.56);
 	}
 
 	this.mouseTouching = function () {

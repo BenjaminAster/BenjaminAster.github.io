@@ -5,6 +5,7 @@ html, body {
 	border: 0;
   padding: 0;
   font-family: Roboto, sans-serif;
+
 }
 
 canvas {
@@ -16,4 +17,14 @@ a:link, a:visited {
   
   text-decoration: underline;
   cursor: pointer;
+}
+
+#infotext {
+  text-align: center;
+  font-size: 2vw;
+
+  position: absolute;
+  left: 0;
+  top: 46vh;
+  width: 100vw;
 }
