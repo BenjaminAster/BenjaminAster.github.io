@@ -75,7 +75,7 @@ let wordChainImgPaths = [
 	`https://benjaminaster.github.io/gallery/whale.jpg`,
 	`https://benjaminaster.github.io/gallery/sea.jpg`,
 	`https://benjaminaster.github.io/gallery/road.jpg`,
-	`https://benjaminaster.github.io/gallery/president.jpg`,
+	`https://benjaminaster.github.io/gallery/trump.jpg`,
 ]
 
 let wordChainFound = null;
