@@ -2,7 +2,7 @@ html, body {
   background-color: #111;
   color: #ddd;
   margin: 5px;
-  border: 1px solid #333;
+  border: 0;
   padding: 10px;
   font-family: Roboto, sans-serif;
 }
@@ -30,6 +30,12 @@ a:link, a:visited {
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+}
+
+#testimg {
+  position: fixed;
+  top: 1vw;
+  right: 1vw;
 }
 
 /* Hide the browser's default checkbox */

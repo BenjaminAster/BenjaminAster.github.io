@@ -131,20 +131,6 @@ function draw() {
 	}
 
 	if (!boxes[0].moving) {
-		/*
-		if (wordChainFound != null) {
-			noStroke();
-			fill(0, 0, 0, 0xbb);
-			rect(0, 0, width, height);
-
-			if (wordChainFound != prevWordChainFound) {
-				document.getElementById("infotext").innerHTML = wordChainTexts[wordChainFound];
-			}
-			prevWordChainFound = wordChainFound;
-		} else {
-			document.getElementById("infotext").innerHTML = "";
-		}
-		*/
 		if (document.getElementById("infotext").innerHTML != "") {
 			noStroke();
 			fill(0, 0, 0, 0xbb);
@@ -154,7 +140,6 @@ function draw() {
 		if (!foundChains.includes(wordChainFound)) {
 			foundChains.push(wordChainFound);
 			boxes.push(new ImgBox(wordChainFound));
-			//boxes[0].windowResized();
 		}
 
 
