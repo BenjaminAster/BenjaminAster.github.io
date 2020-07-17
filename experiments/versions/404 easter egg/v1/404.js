@@ -46,19 +46,14 @@ let boxes = [];
 let gridWidth = notFoundStr.length + 2;
 
 
-let testImgBox;
-
-
 function setup() {
 	createCanvas(windowWidth, windowHeight);
 
 	for (let i = 0; i < notFoundStr.length; i++) {
 		if (notFoundStr[i] != ' ') {
-			boxes.push(new LetterBox(notFoundStr[i], i));
+			boxes.push(new Box(notFoundStr[i], i));
 		}
 	}
-
-	//boxes.push(new ImgBox(1))
 
 	if (navigator.appVersion.indexOf("Mac") != -1)
 		textFont("Trebuchet MS");
