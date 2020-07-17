@@ -28,6 +28,7 @@ class LetterBox {
 		this.rightNeighbor = null;
 		for (let i in boxes) {
 			if (
+				boxes[i].type == "letter" &&
 				boxes[i].ux > this.ux + 0.7 && boxes[i].ux < this.ux + 2.3 &&
 				boxes[i].uy > this.uy - 0.3 && boxes[i].uy < this.uy + 0.3
 			) {
