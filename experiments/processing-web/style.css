@@ -8,6 +8,7 @@ html, body {
 }
 canvas {
   display: block;
+  outline: none;
 }
 
 a:link, a:visited {
