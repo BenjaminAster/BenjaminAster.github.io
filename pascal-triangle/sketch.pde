@@ -20,14 +20,13 @@ boolean calculate = false;
 int[][] pascalTriangle;
 
 void setup() {
-	size(document.documentElement.clientWidth - 1, document.documentElement.clientHeight - 1);
+	size(document.documentElement.clientWidth, document.documentElement.clientHeight);
 	
   minSideLength = min(width, height);
 
   pascalSize = int(minSideLength / squareSize);
   pascalTriangle = new int[pascalSize][pascalSize];
   noStroke();
-  println(pascalSize);
 
   colorMode(HSB);
   textAlign(LEFT, TOP);
