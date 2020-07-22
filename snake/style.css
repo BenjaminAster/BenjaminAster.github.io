@@ -7,7 +7,7 @@ body {
   font-family: Roboto, sans-serif;
   
   
-  margin: auto;
+  /*margin: auto;*/
 }
 
 
@@ -29,7 +29,5 @@ a:link, a:visited {
 }
 
 table {
-  background-color: blue;
-  color: green;
-  border-color: red;
+  background-color: green;
 }
