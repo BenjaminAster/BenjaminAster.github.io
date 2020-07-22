@@ -28,12 +28,8 @@ a:link, a:visited {
   cursor: pointer;
 }
 
-#sketch-canvas {
-  margin: auto;
-  color: red;
-  background-color: red;
-}
-
-div {
-  margin: auto;
+table {
+  background-color: blue;
+  color: green;
+  border-color: red;
 }
