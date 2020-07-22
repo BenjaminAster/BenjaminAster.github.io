@@ -27,5 +27,9 @@ a:link, a:visited {
 
 #canvas {
   margin: auto;
-  background-color: darkGrey;
+  color: red;
+}
+
+div {
+  margin: auto;
 }
