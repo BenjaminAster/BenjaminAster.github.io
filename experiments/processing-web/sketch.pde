@@ -103,10 +103,16 @@ int maxBalls = 1000;
 int numBalls = 0;
 int currentBall = 0;
 
+void settings() {
+	//size(displayWidth, displayHeight);
+	fullScreen();
+}
+
 void setup() 
 {
 	// general setup
-	size (500,500);
+	//size (500,500);
+	//fullScreen();
 	smooth();
 }
 
