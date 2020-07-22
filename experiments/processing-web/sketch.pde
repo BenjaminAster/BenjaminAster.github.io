@@ -103,14 +103,17 @@ int maxBalls = 1000;
 int numBalls = 0;
 int currentBall = 0;
 
+/*
 void settings() {
-	//size(document.documentElement.clientWidth, document.documentElement.clientHeight);
-	size(400, 400);
 	//fullScreen();
 }
+*/
 
 void setup() 
 {
+	size(document.documentElement.clientWidth, document.documentElement.clientHeight);
+	//size(400, 400);
+
 	// general setup
 	//size (500,500);
 	//fullScreen();
