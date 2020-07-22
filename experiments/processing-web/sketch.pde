@@ -111,7 +111,8 @@ void settings() {
 
 void setup() 
 {
-	size(document.documentElement.clientWidth, document.documentElement.clientHeight);
+	//size(document.documentElement.clientWidth, document.documentElement.clientHeight);
+	size(window.screen.width, window.screen.height);
 	//size(400, 400);
 
 	// general setup
