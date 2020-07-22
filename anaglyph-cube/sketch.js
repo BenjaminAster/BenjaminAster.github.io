@@ -9,15 +9,11 @@ let camFOV;
 
 let mouseHeight = 0;
 
-let myFont;
-
-function preload() {
-  myFont = loadFont("roboto-mono.ttf");
-}
 
 function setup() {
 	createCanvas(windowWidth, windowHeight, WEBGL);
 	
+  myFont = loadFont('https://benjaminaster.github.io/utils/roboto-mono.ttf');
 
   pixelDensity(1);
 
@@ -123,3 +119,22 @@ function mouseWheel(event) {
   mouseHeight += event.delta / 1.5;
   mouseHeight = constrain(mouseHeight, -1000, 800)
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//
