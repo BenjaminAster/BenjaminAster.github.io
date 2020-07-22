@@ -28,6 +28,8 @@ void setup() {
   pascalTriangle = new int[pascalSize][pascalSize];
   noStroke();
 
+	smooth();
+
   colorMode(HSB);
   textAlign(LEFT, TOP);
   textSize(20);
@@ -114,7 +116,7 @@ void drawTriangle() {
     textAlign(RIGHT, CENTER);
     for (int i = 0; i < modulo; i++) {
       noStroke();
-      //fill(map(i, 0.0, modulo, 0.0, 255.0), 255, 255);
+      fill(map(i, 0.0, modulo, 0.0, 255.0), 255, 255);
       
       rect(1.0 * width - height / 20.0, 1.0 * i * height / modulo, 1.0 * height / 20.0, 1.0 * height / modulo);
       fill(255);
