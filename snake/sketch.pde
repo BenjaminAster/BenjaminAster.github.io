@@ -51,7 +51,7 @@ ArrayList <PVector> snake = new ArrayList <PVector>();
 
 void setup()
 {
-	wHeight = document.documentElement.clientHeight;
+	wHeight = document.documentElement.clientHeight - 8;
 	wWidth = wHeight
 	size(wWidth, wHeight);
   cSize = int(sqrt(wWidth * wHeight));

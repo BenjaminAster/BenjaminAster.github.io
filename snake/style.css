@@ -27,7 +27,3 @@ a:link, a:visited {
   text-decoration: underline;
   cursor: pointer;
 }
-
-table {
-  background-color: green;
-}
