@@ -23,7 +23,7 @@ PImage myHeadRight;
 PImage myHeadUp;
 PImage myHeadLeft;
 PImage myHeadDown;
-PImage Elias;
+PImage elias;
 
 int gridHeight = 30;  // inclusive border
 int gridWidth = 30;
@@ -68,11 +68,11 @@ void setup()
   prevDir.y = dir.y;
 
   imageMode(CENTER);
-  myHeadRight = loadImage("myHeadRight.png");
-  myHeadUp = loadImage("myHeadUp.png");
-  myHeadLeft = loadImage("myHeadLeft.png");
-  myHeadDown = loadImage("myHeadDown.png");
-  Elias = loadImage("Elias.png");
+  myHeadRight = loadImage("https://benjaminaster.github.io/media/my-head-right.png");
+  myHeadUp = loadImage("https://benjaminaster.github.io/media/my-head-up.png");
+  myHeadLeft = loadImage("https://benjaminaster.github.io/media/my-head-left.png");
+  myHeadDown = loadImage("https://benjaminaster.github.io/media/my-head-down.png");
+  elias = loadImage("https://benjaminaster.github.io/media/elias-face.png");
 
   for (int i = 0; i < snakeStartLength; i++) {
     snake.add(new PVector(int(gridWidth/2) - i, int(gridHeight/2)));
@@ -230,7 +230,7 @@ void draw()
             if (head == "Benjamin") {
               image(myHeadUp, map(clm + 0.5, 0.0, gridWidth, 0.0, cWidth), map(row + 0.5, 0.0, gridHeight, 0.0, cHeight), 1.5 * cWidth / gridWidth, 1.5 * cHeight / gridHeight);
             } else if (head == "Elias") {
-              image(Elias, map(clm + 0.5, 0.0, gridWidth, 0.0, cWidth), map(row + 0.5, 0.0, gridHeight, 0.0, cHeight), 2.5 * cWidth / gridWidth, 2.5 * cHeight / gridHeight);
+              image(elias, map(clm + 0.5, 0.0, gridWidth, 0.0, cWidth), map(row + 0.5, 0.0, gridHeight, 0.0, cHeight), 2.5 * cWidth / gridWidth, 2.5 * cHeight / gridHeight);
             }
           }
         }
