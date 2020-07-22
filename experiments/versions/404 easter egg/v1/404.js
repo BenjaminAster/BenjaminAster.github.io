@@ -16,25 +16,25 @@ let wordChains = [
 ];
 let wordChainTexts = [
 	`Congratulations, you found the easter egg!<br>That won't help you in your later life.`,
-	`You can play snake at<br><a href="https://benjaminaster.github.io/games/snake">benjaminaster.github.io/games/snake</a>`,
-	`You can play pong at<br><a href="https://benjaminaster.github.io/games/pong">benjaminaster.github.io/games/pong</a>`,
-	`You can play tetris at<br><a href="https://benjaminaster.github.io/games/tetris">benjaminaster.github.io/games/tetris</a>`,
-	`You can play Benjamin Shooter at<br><a href="https://benjaminaster.github.io/games/benjamin-shooter">benjaminaster.github.io/games/benjamin-shooter</a>`,
+	`You can play snake at<br><a href="https://benjaminaster.github.io/snake">benjaminaster.github.io/snake</a>`,
+	`You can play pong at<br><a href="https://benjaminaster.github.io/pong">benjaminaster.github.io/pong</a>`,
+	`You can play tetris at<br><a href="https://benjaminaster.github.io/tetris">benjaminaster.github.io/tetris</a>`,
+	`You can play Benjamin Shooter at<br><a href="https://benjaminaster.github.io/benjamin-shooter">benjaminaster.github.io/benjamin-shooter</a>`,
 	`REEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE`,
 	`Wow, a tree!`,
 	`I'm thirsty!`,
 	`Look at this sheep!`,
 ];
 let wordChainImgPaths = [
-	`https://benjaminaster.github.io/gallery/egg.jpg`,
-	`https://benjaminaster.github.io/gallery/snake.jpg`,
-	`https://benjaminaster.github.io/gallery/pong.jpg`,
-	`https://benjaminaster.github.io/gallery/tetris.jpg`,
-	`https://benjaminaster.github.io/gallery/benjamin-shooter.jpg`,
-	`https://benjaminaster.github.io/gallery/reeee.jpg`,
-	`https://benjaminaster.github.io/gallery/tree.jpg`,
-	`https://benjaminaster.github.io/gallery/water.jpg`,
-	`https://benjaminaster.github.io/gallery/sheep.jpg`,
+	`https://benjaminaster.github.io/media/egg.jpg`,
+	`https://benjaminaster.github.io/media/snake.jpg`,
+	`https://benjaminaster.github.io/media/pong.jpg`,
+	`https://benjaminaster.github.io/media/tetris.jpg`,
+	`https://benjaminaster.github.io/media/benjamin-shooter.jpg`,
+	`https://benjaminaster.github.io/media/reeee.jpg`,
+	`https://benjaminaster.github.io/media/tree.jpg`,
+	`https://benjaminaster.github.io/media/water.jpg`,
+	`https://benjaminaster.github.io/media/sheep.jpg`,
 ]
 
 let wordChainFound = null;

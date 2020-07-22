@@ -1,34 +1,24 @@
 
 let unit;
 
-let car;
+let grid;
+let gridWidth = 10;
+let gridHeight = 10;
 
 function setup() {
 	createCanvas(windowWidth, windowHeight);
 
-	windowResized();
+	grid = Array(gridHeight).fill(0).map(x => Array(gridWidth).fill(false));
 
-	car = new Car()
+	windowResized();
 }
 
 function draw() {
 	background(0);
-
-	car.show();
-
-	if (keyIsDown(UP_ARROW)) {
-		car.move(true);
-	} else if (keyIsDown(DOWN_ARROW)) {
-		car.move(false);
-	}
-	car.update()
 }
 
 function windowResized() {
 	resizeCanvas(windowWidth, windowHeight);
 
 	unit = width / 100;
-}
-
-function keyPressed() {
 }
