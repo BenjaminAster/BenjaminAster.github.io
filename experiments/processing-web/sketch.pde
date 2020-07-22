@@ -104,8 +104,8 @@ int numBalls = 0;
 int currentBall = 0;
 
 void settings() {
-	//size(displayWidth, displayHeight);
-	fullScreen();
+	size(displayWidth, displayHeight);
+	//fullScreen();
 }
 
 void setup() 
