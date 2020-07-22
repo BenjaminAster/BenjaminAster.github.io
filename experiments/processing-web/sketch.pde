@@ -105,6 +105,7 @@ int currentBall = 0;
 
 void settings() {
 	size(document.documentElement.clientWidth, document.documentElement.clientHeight);
+	size(400, 400);
 	//fullScreen();
 }
 
