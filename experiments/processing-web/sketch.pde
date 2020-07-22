@@ -104,7 +104,7 @@ int numBalls = 0;
 int currentBall = 0;
 
 void settings() {
-	size(displayWidth, displayHeight);
+	size(window.screen.width, window.screen.height);
 	//fullScreen();
 }
 
