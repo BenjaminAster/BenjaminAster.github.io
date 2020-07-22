@@ -7,11 +7,11 @@
 int minSideLength;
 int maxSideLength;
 
-float squareSize = 4;
-int modulo = 90;
+float squareSize = 20;
+int modulo = 6;
 int pascalSize;
 
-boolean enableSingleModuloView = false;
+boolean enableSingleModuloView = true;
 int showOnly = 0;
 boolean currentlyCalculating = false;
 long lastKeyPress = -1;

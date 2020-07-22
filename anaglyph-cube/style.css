@@ -1,21 +1,13 @@
-body {
+html, body {
   background-color: #111;
   color: #fff;
   margin: 0;
   border: 0;
   padding: 0;
-	font-family: Roboto, sans-serif;
+  /*font-family: Roboto, sans-serif;*/
 }
-
-
-::-webkit-scrollbar {
-	width: 0;
-}
-
-
 canvas {
   display: block;
-  outline: none;
 }
 
 a:link, a:visited {
