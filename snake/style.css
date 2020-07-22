@@ -24,3 +24,8 @@ a:link, a:visited {
   text-decoration: underline;
   cursor: pointer;
 }
+
+#canvas {
+  margin: auto;
+  background-color: darkGrey;
+}
