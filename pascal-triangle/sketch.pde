@@ -1,7 +1,9 @@
 
 
-int wWidth = 800; // the width of the window
-int wHeight = 600; // the height of the window
+//int wWidth = 800; // the width of the window
+//int wHeight = 600; // the height of the window
+
+
 int minSideLength;
 int maxSideLength;
 
@@ -20,7 +22,7 @@ int[][] pascalTriangle;
 void setup() {
 	size(document.documentElement.clientWidth - 1, document.documentElement.clientHeight - 1);
 	
-  minSideLength = min(wWidth, wHeight);
+  minSideLength = min(width, height);
 
   pascalSize = int(minSideLength / squareSize);
   pascalTriangle = new int[pascalSize][pascalSize];
@@ -60,11 +62,11 @@ void drawTriangle() {
       if (enableSingleModuloView == false) {
         fill(map(pascalTriangle[row][clm] % modulo, 0, modulo, 0, 255), 255, 255 );
         // print((pascalTriangle[row][clm]) + " % modulo = " + (pascalTriangle[row][clm] % modulo) + ", \n");
-        rect(wWidth / 2.0 + (clm - (row + 1)/2.0) * squareSize, row * squareSize, squareSize, squareSize);
+        rect(width / 2.0 + (clm - (row + 1)/2.0) * squareSize, row * squareSize, squareSize, squareSize);
       } else {
         if (showOnly == pascalTriangle[row][clm]) {
           fill(255);
-          rect(wWidth / 2.0 + (clm - (row + 1)/2.0) * squareSize, row * squareSize, squareSize, squareSize);
+          rect(width / 2.0 + (clm - (row + 1)/2.0) * squareSize, row * squareSize, squareSize, squareSize);
         }
 
       }
@@ -72,19 +74,19 @@ void drawTriangle() {
 
     if (enableSingleModuloView == true) {
       fill(#FF0000);
-      rect(0, row * squareSize, wWidth / 2.0 - squareSize * (row + 1) / 2.0, squareSize);
-      rect(wWidth / 2.0 + squareSize * (row + 1) / 2.0, row * squareSize, wWidth - wWidth / 2.0 - squareSize * (row + 1) / 2.0, squareSize);
+      rect(0, row * squareSize, width / 2.0 - squareSize * (row + 1) / 2.0, squareSize);
+      rect(width / 2.0 + squareSize * (row + 1) / 2.0, row * squareSize, width - width / 2.0 - squareSize * (row + 1) / 2.0, squareSize);
     }
 
     fill(255);
     textAlign(RIGHT, CENTER);
     textSize(squareSize);
-    text(row, wWidth / 2.0 - squareSize * (row + 1.25) / 2.0, (row + 0.5) * squareSize);
+    text(row, width / 2.0 - squareSize * (row + 1.25) / 2.0, (row + 0.5) * squareSize);
   }
 
 
   textAlign(LEFT, TOP);
-  textSize(wWidth / 50);
+  textSize(width / 50);
   fill(255);
   if (enableSingleModuloView == true) {
     text(("modulo = " + modulo + " (up & down arrow)\nsquare size = " + int(squareSize * 100.0) / 100.0 + " (left & right arrow)\nshow only = " + showOnly + " (W & S)\nPress V to enable color view"), 10, 10);
@@ -99,14 +101,14 @@ void drawTriangle() {
 
         fill(0);
       }
-      rect(1.0 * wWidth - wHeight / 20, 1.0 * i * wHeight / modulo, 1.0 * wHeight / 20, 1.0 * wHeight / modulo);
+      rect(1.0 * width - height / 20, 1.0 * i * height / modulo, 1.0 * height / 20, 1.0 * height / modulo);
       fill(255);
       if (modulo < 40) {
-        textSize(1.0 * wHeight / 40);
+        textSize(1.0 * height / 40);
       } else {
-        textSize(1.0 * wHeight / modulo);
+        textSize(1.0 * height / modulo);
       }
-      text(i + " = ", wWidth - wHeight / 20, (i + 0.5) * wHeight / modulo);
+      text(i + " = ", width - height / 20, (i + 0.5) * height / modulo);
     }
   } else {
     text(("modulo = " + modulo + " (up & down arrow)\nsquare size = " + int(squareSize * 100.0) / 100.0) + " (left & right arrow)\nPress V to enable modulo view", 10, 10);
@@ -115,14 +117,14 @@ void drawTriangle() {
       noStroke();
       //fill(map(i, 0.0, modulo, 0.0, 255.0), 255, 255);
       
-      rect(1.0 * wWidth - wHeight / 20.0, 1.0 * i * wHeight / modulo, 1.0 * wHeight / 20.0, 1.0 * wHeight / modulo);
+      rect(1.0 * width - height / 20.0, 1.0 * i * height / modulo, 1.0 * height / 20.0, 1.0 * height / modulo);
       fill(255);
       if (modulo < 40) {
-        textSize(1.0 * wHeight / 40.0);
+        textSize(1.0 * height / 40.0);
       } else {
-        textSize(1.0 * wHeight / modulo);
+        textSize(1.0 * height / modulo);
       }
-      text(i + " = ", wWidth - wHeight / 20.0, (i + 0.5) * wHeight / modulo);
+      text(i + " = ", width - height / 20.0, (i + 0.5) * height / modulo);
     }
   }
 }
