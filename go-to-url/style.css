@@ -1,0 +1,28 @@
+html, body {
+  background-color: #111;
+  color: #fff;
+  margin: 10px;
+  border: 0;
+  padding: 0;
+  font-family: Roboto, sans-serif;
+}
+canvas {
+  display: block;
+}
+
+a:link, a:visited {
+  color: #7ab5ff;
+  
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+input {
+  width: calc(100vw - 50px);
+  height: 50px;
+  color: white;
+  background-color: transparent;
+  border: medium solid white;
+  border-radius: 10px;
+  outline: none;
+}
