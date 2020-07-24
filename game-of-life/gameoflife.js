@@ -1,24 +1,36 @@
 class GameOfLife {
 	constructor() {
-		this.gridWidth = 100;
-		this.gridHeight = 100;
+		this.gridWidth = 500;
+		this.gridHeight = 300;
 		this.grid = Array(this.gridHeight).fill(0).map(x => Array(this.gridWidth).fill(false));
 
 		this.prevClm;
 		this.prevRow;
 
-		this.generationDelay = 250;
+		this.generationDelay = 0;
 		this.prevGeneration = millis();
 		this.paused = true;
 	}
 
-	mousePressed() {
-		let cellX = int(map(mouseX, vis.minX, vis.maxX, 0, this.gridWidth));
-		let cellY = int(map(mouseY, vis.minY, vis.maxY, 0, this.gridHeight));
+	mouse(pressed, shiftIsDown) {
+		let cellX = floor(map(mouseX, vis.minX, vis.maxX, 0, this.gridWidth));
+		let cellY = floor(map(mouseY, vis.minY, vis.maxY, 0, this.gridHeight));
 
 		if (cellX >= 0 && cellX < this.gridWidth && cellY >= 0 && cellY < this.gridHeight) {
-			this.grid[cellY][cellX] = !this.grid[cellY][cellX];
+			if (pressed) {
+				this.grid[cellY][cellX] = !shiftIsDown;
+			}
+
+			noStroke();
+			fill(shiftIsDown ? "#ff000055" : "#00ff0055");
+			rect(
+				map(cellX, 0, this.gridWidth, vis.minX, vis.maxX),
+				map(cellY, 0, this.gridHeight, vis.minY, vis.maxY),
+				(vis.maxX - vis.minX) / this.gridWidth,
+				(vis.maxY - vis.minY) / this.gridHeight);
 		}
+
+
 	}
 
 	newGeneration() {
@@ -28,7 +40,7 @@ class GameOfLife {
 			let oldGrid = [];
 
 
-			
+
 			for (let row = 0; row < this.gridHeight; row++) {
 				oldGrid.push(Array(this.gridWidth));
 				//oldGrid[row] = Array(this.gridWidth);
@@ -36,7 +48,7 @@ class GameOfLife {
 					oldGrid[row][clm] = this.grid[row][clm];
 				}
 			}
-			
+
 
 
 
@@ -60,11 +72,11 @@ class GameOfLife {
 						let nbrX = clm + neighborCoordinates[i].x;  // nbr short for neighbor
 						let nbrY = row + neighborCoordinates[i].y;
 
-						if (nbrX >= 0 && nbrX < this.gridWidth && nbrY >= 0 && nbrY < this.gridHeight) {
-							if (oldGrid[nbrY][nbrX]) {
-								neighbors++;
-							}
+						//if (nbrX >= 0 && nbrX < this.gridWidth && nbrY >= 0 && nbrY < this.gridHeight) {
+						if (oldGrid[(nbrY + this.gridHeight) % this.gridHeight][(nbrX + this.gridWidth) % this.gridWidth]) {
+							neighbors++;
 						}
+						//}
 
 					}
 

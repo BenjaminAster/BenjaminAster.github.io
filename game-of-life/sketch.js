@@ -20,6 +20,12 @@ function draw() {
 
 	vis.draw();
 
+	if (mouseIsPressed && mouseButton == LEFT) {
+		gol.mouse(true, keyIsDown(SHIFT));
+	} else {
+		gol.mouse(false, keyIsDown(SHIFT));
+	}
+
 	gol.newGeneration();
 }
 
@@ -41,8 +47,6 @@ function mouseWheel(event) {
 function mousePressed() {
 	if (mouseButton == CENTER) {
 		vis.drag(true, keyIsDown(SHIFT));
-	} else if (mouseButton == LEFT) {
-		gol.mousePressed();
 	}
 }
 
@@ -55,5 +59,7 @@ function mouseReleased() {
 function keyPressed() {
 	if (key == ' ') {
 		gol.paused = !gol.paused;
+	} else if (key == 'f') {
+		vis.fitFrame();
 	}
 }

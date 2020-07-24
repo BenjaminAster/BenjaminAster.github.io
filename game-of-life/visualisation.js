@@ -24,21 +24,24 @@ class Visualisation {
 			for (let clm = 0; clm < gol.gridWidth; clm++) {
 				if (gol.grid[row][clm]) {
 					fill(0xff);
-					strokeWeight(this.zoomNum * unit / 32);
-					stroke(0x00);
-				} else if ((row + clm) % 2 == 0) {
+					//strokeWeight(this.zoomNum * unit / 32);
+					//stroke(0x00);
+					noStroke();
+					rect(
+						map(clm, 0, gol.gridWidth, this.minX, this.maxX),
+						map(row, 0, gol.gridHeight, this.minY, this.maxY),
+						(this.maxX - this.minX) / gol.gridWidth,
+						(this.maxY - this.minY) / gol.gridHeight);
+				} 
+				/*else if ((row + clm) % 2 == 0) {
 					fill(0x16);
 					noStroke();
 				} else {
 					noFill();
 					noStroke();
 				}
+				*/
 
-				rect(
-					map(clm, 0, gol.gridWidth, this.minX, this.maxX),
-					map(row, 0, gol.gridHeight, this.minY, this.maxY),
-					(this.maxX - this.minX) / gol.gridWidth,
-					(this.maxY - this.minY) / gol.gridHeight);
 			}
 		}
 	}
@@ -74,5 +77,12 @@ class Visualisation {
 		} else {
 			this.dragging = false;
 		}
+	}
+
+	fitFrame() {
+		this.minX = 0;
+		this.maxX = height * gol.gridWidth / gol.gridHeight;  // intended
+		this.minY = 0;
+		this.maxY = height;
 	}
 }

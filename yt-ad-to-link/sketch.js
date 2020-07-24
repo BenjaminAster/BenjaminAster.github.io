@@ -67,7 +67,7 @@ function draw() {
 
 		document.getElementById("url-infos").hidden = false;
 		document.getElementById("url-infotext").innerHTML = `The original video of the ad (${
-			(links.includes(url)) ? "already" : "not yet"
+			(links.includes(url)) ? '<span style="color: lime">already</span>' : '<span style="color: red">not yet</span>'
 			} in <a href="./links">this</a> list):`;
 		document.getElementById("url").innerText = url;
 		document.getElementById("url").href = url;
