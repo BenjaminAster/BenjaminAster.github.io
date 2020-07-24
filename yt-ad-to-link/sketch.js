@@ -56,7 +56,7 @@ function createUrl() {
 
 function setup() {
 	//links = loadStrings("./links/unlisted-ad-links.txt");
-	links = loadStrings("https://benjaminaster.github.io/tools/yt-ad-to-link/links/unlisted-ad-links.txt");
+	links = loadStrings("https://benjaminaster.github.io/yt-ad-to-link/links/unlisted-ad-links.txt");
 }
 
 function draw() {
