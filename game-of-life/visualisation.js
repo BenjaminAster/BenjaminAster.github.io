@@ -8,26 +8,30 @@ class Visualisation {
 		this.zoomNum = 1;
 
 		this.dragging = false;
+		this.dragDivisor = 1;
 	}
 
 	draw() {
 
 		if (this.dragging) {
-			this.minX += movedX;
-			this.maxX += movedX;
-			this.minY += movedY;
-			this.maxY += movedY;
+			this.minX += movedX / this.dragDivisor;
+			this.maxX += movedX / this.dragDivisor;
+			this.minY += movedY / this.dragDivisor;
+			this.maxY += movedY / this.dragDivisor;
 		}
-
-		strokeWeight(this.zoomNum * unit / 3);
-		stroke(0xff);
 
 		for (let row = 0; row < gol.gridHeight; row++) {
 			for (let clm = 0; clm < gol.gridWidth; clm++) {
 				if (gol.grid[row][clm]) {
 					fill(0xff);
+					strokeWeight(this.zoomNum * unit / 32);
+					stroke(0x00);
+				} else if ((row + clm) % 2 == 0) {
+					fill(0x16);
+					noStroke();
 				} else {
-					fill(0x00);
+					noFill();
+					noStroke();
 				}
 
 				rect(
@@ -43,13 +47,13 @@ class Visualisation {
 		let zoomFactor = zoom;
 		this.zoomNum *= zoomFactor;
 
-		
+
 		this.minX = mouseX - (mouseX - this.minX) * zoomFactor;
 		this.maxX = mouseX + (this.maxX - mouseX) * zoomFactor;
 
 		this.minY = mouseY - (mouseY - this.minY) * zoomFactor;
 		this.maxY = mouseY + (this.maxY - mouseY) * zoomFactor;
-		
+
 
 		/*
 		this.minX = mouseX - zoomNum*width;
@@ -57,9 +61,10 @@ class Visualisation {
 		*/
 	}
 
-	drag(bYes) {
+	drag(bYes, shiftIsDown) {
 		if (bYes) {
 			this.dragging = true;
+			this.dragDivisor = (shiftIsDown ? 5 : 1);
 			/*
 			this.dragStartMinX = this.minX;
 			this.dragStartMaxX = this.maxX;

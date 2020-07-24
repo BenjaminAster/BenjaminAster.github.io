@@ -10,7 +10,6 @@ function setup() {
 	gol = new GameOfLife();
 	vis = new Visualisation();
 
-	gol.grid[5][0] = true;
 
 	windowResized();
 
@@ -20,6 +19,8 @@ function draw() {
 	background(0);
 
 	vis.draw();
+
+	gol.newGeneration();
 }
 
 function windowResized() {
@@ -29,21 +30,30 @@ function windowResized() {
 }
 
 function mouseWheel(event) {
+	let divisor = 150 * ((keyIsDown(SHIFT)) ? 10 : 1);
 	if (event.delta > 0) {
-		vis.zoom(zoom = 1 / (1 + event.delta / 150));
+		vis.zoom(zoom = 1 / (1 + event.delta / divisor));
 	} else {
-		vis.zoom(zoom = (1 + -event.delta / 150));
+		vis.zoom(zoom = (1 + -event.delta / divisor));
 	}
 }
 
 function mousePressed() {
 	if (mouseButton == CENTER) {
-		vis.drag(true);
+		vis.drag(true, keyIsDown(SHIFT));
+	} else if (mouseButton == LEFT) {
+		gol.mousePressed();
 	}
 }
 
 function mouseReleased() {
 	if (mouseButton == CENTER) {
 		vis.drag(false);
+	}
+}
+
+function keyPressed() {
+	if (key == ' ') {
+		gol.paused = !gol.paused;
 	}
 }
