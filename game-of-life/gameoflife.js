@@ -1,7 +1,7 @@
 class GameOfLife {
 	constructor() {
-		this.gridWidth = 500;
-		this.gridHeight = 300;
+		this.gridWidth = 160;
+		this.gridHeight = 90;
 		this.grid = Array(this.gridHeight).fill(0).map(x => Array(this.gridWidth).fill(false));
 
 		this.prevClm;
@@ -34,62 +34,52 @@ class GameOfLife {
 	}
 
 	newGeneration() {
-		if (millis() - this.prevGeneration >= this.generationDelay && !this.paused) {
-			this.prevGeneration = millis();
+		this.prevGeneration = millis();
 
-			let oldGrid = [];
+		let oldGrid = [];
 
-
-
-			for (let row = 0; row < this.gridHeight; row++) {
-				oldGrid.push(Array(this.gridWidth));
-				//oldGrid[row] = Array(this.gridWidth);
-				for (let clm = 0; clm < this.gridWidth; clm++) {
-					oldGrid[row][clm] = this.grid[row][clm];
-				}
-			}
+		for (let row = 0; row < this.gridHeight; row++) {
+			oldGrid.push(Array.from(this.grid[row]));
+		}
 
 
 
 
-			let neighborCoordinates = [
-				{ x: 1, y: 0 },
-				{ x: 1, y: 1 },
-				{ x: 0, y: 1 },
-				{ x: -1, y: 1 },
-				{ x: -1, y: 0 },
-				{ x: -1, y: -1 },
-				{ x: 0, y: -1 },
-				{ x: 1, y: -1 },
-			];
+		let neighborCoordinates = [
+			{ x: 1, y: 0 },
+			{ x: 1, y: 1 },
+			{ x: 0, y: 1 },
+			{ x: -1, y: 1 },
+			{ x: -1, y: 0 },
+			{ x: -1, y: -1 },
+			{ x: 0, y: -1 },
+			{ x: 1, y: -1 },
+		];
 
-			for (let row = 0; row < this.gridHeight; row++) {
-				for (let clm = 0; clm < this.gridWidth; clm++) {
+		for (let row = 0; row < this.gridHeight; row++) {
+			for (let clm = 0; clm < this.gridWidth; clm++) {
 
-					let neighbors = 0;
+				let neighbors = 0;
 
-					for (let i in neighborCoordinates) {
-						let nbrX = clm + neighborCoordinates[i].x;  // nbr short for neighbor
-						let nbrY = row + neighborCoordinates[i].y;
+				for (let i in neighborCoordinates) {
+					let nbrX = clm + neighborCoordinates[i].x;  // nbr short for neighbor
+					let nbrY = row + neighborCoordinates[i].y;
 
-						//if (nbrX >= 0 && nbrX < this.gridWidth && nbrY >= 0 && nbrY < this.gridHeight) {
-						if (oldGrid[(nbrY + this.gridHeight) % this.gridHeight][(nbrX + this.gridWidth) % this.gridWidth]) {
-							neighbors++;
-						}
-						//}
-
+					if (oldGrid[(nbrY + this.gridHeight) % this.gridHeight][(nbrX + this.gridWidth) % this.gridWidth]) {
+						neighbors++;
 					}
 
-					if (oldGrid[row][clm]) {
-						if (neighbors < 2) {
-							this.grid[row][clm] = false;
-						} else if (neighbors > 3) {
-							this.grid[row][clm] = false;
-						}
-					} else {
-						if (neighbors == 3) {
-							this.grid[row][clm] = true;
-						}
+				}
+
+				if (oldGrid[row][clm]) {
+					if (neighbors < 2) {
+						this.grid[row][clm] = false;
+					} else if (neighbors > 3) {
+						this.grid[row][clm] = false;
+					}
+				} else {
+					if (neighbors == 3) {
+						this.grid[row][clm] = true;
 					}
 				}
 			}

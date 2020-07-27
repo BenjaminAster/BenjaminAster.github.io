@@ -34,7 +34,7 @@ textarea {
   border-style: solid;
   border-radius: 2vh;
   border-width: medium;
-  box-shadow: 0 0 2vh 1.5vh black;
+  box-shadow: 0 0 2vh 1vh black;
 }
 textarea:focus {
   box-shadow: 0 0 3vh dimGrey;

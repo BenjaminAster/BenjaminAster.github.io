@@ -5,6 +5,16 @@ let gol;
 let vis;
 
 function setup() {
+
+	alert(`Scroll with mousewheel to zoom, Shift+Scroll with mousewheel to zoom slowly.${"\n"
+		}Press mousewheel to drag, Shift+Press mousewheel to drag slowly.${"\n"
+		}Click to add cells.${"\n"
+		}Shift+Click to delete cells.${"\n"
+		}Press Space to pause/play the Game of Life.${"\n"
+		}Press D to do one Generation while in pause mode.${"\n"
+		}Press F to fit the whole canvas onto the screen.`);
+		
+
 	createCanvas(windowWidth, windowHeight);
 
 	gol = new GameOfLife();
@@ -26,7 +36,9 @@ function draw() {
 		gol.mouse(false, keyIsDown(SHIFT));
 	}
 
-	gol.newGeneration();
+	if (millis() - gol.prevGeneration >= gol.generationDelay && !gol.paused) {
+		gol.newGeneration();
+	}
 }
 
 function windowResized() {
@@ -61,5 +73,7 @@ function keyPressed() {
 		gol.paused = !gol.paused;
 	} else if (key == 'f') {
 		vis.fitFrame();
+	} else if (key == 'd') {
+		gol.newGeneration();
 	}
 }

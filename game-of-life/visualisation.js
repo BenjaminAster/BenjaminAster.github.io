@@ -32,16 +32,17 @@ class Visualisation {
 						map(row, 0, gol.gridHeight, this.minY, this.maxY),
 						(this.maxX - this.minX) / gol.gridWidth,
 						(this.maxY - this.minY) / gol.gridHeight);
-				} 
-				/*else if ((row + clm) % 2 == 0) {
+
+				}
+				else if ((row + clm) % 2 == 0) {
 					fill(0x16);
 					noStroke();
-				} else {
-					noFill();
-					noStroke();
+					rect(
+						map(clm, 0, gol.gridWidth, this.minX, this.maxX),
+						map(row, 0, gol.gridHeight, this.minY, this.maxY),
+						(this.maxX - this.minX) / gol.gridWidth,
+						(this.maxY - this.minY) / gol.gridHeight);
 				}
-				*/
-
 			}
 		}
 	}
