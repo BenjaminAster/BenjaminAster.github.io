@@ -20,6 +20,7 @@ function getTitle(url, successCallback = function () { }) {
 
 function setup() {
 	ids = loadStrings("https://benjaminaster.github.io/yt-ad-to-link/links/unlisted-ad-links.txt", success = function () {
+		document.querySelector("#num-of-links").innerHTML = ids.length;
 		ids.forEach(function (item, index) {
 			ids[index] = item.substring(32, item.length);
 		});
