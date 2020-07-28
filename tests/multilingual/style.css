@@ -1,0 +1,19 @@
+html, body {
+	background-color: #111;
+	color: #fff;
+  margin: 5px;
+	border: none;
+  padding: 5px;
+  font-family: Roboto, sans-serif;
+}
+
+canvas {
+  display: block;
+}
+
+a:link, a:visited {
+  color: #7ab5ff;
+  
+  text-decoration: underline;
+  cursor: pointer;
+}
