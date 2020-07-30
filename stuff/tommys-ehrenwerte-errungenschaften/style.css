@@ -42,6 +42,10 @@ table, tr, td {
   color: yellow;
 }
 
+.kleinbuchstabe, .grossbuchstabe, .sonderzeichen {
+  font-family: Roboto Mono, monospace;
+}
+
 ::-webkit-scrollbar {
   width: 10px;
 }
