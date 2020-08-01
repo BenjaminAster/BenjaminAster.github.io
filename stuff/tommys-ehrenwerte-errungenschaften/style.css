@@ -7,10 +7,6 @@ html, body {
   font-family: Roboto, sans-serif;
 }
 
-canvas {
-  display: block;
-}
-
 a:link, a:visited {
   color: #7ab5ff;
   
@@ -32,6 +28,7 @@ table, tr, td {
   border-collapse: collapse;
   border: thin solid white;
   padding: 3px;
+  font-size: 2.5vh;
 }
 
 .kleinbuchstabe {
