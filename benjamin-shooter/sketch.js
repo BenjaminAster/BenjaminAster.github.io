@@ -50,34 +50,34 @@ let frameRate;
 
 let imgPaths = {
 	akadGym:
-		"https://benjaminaster.github.io/media/akadgym-dunkel-verschwommen.jpg",
+		"https://benjaminaster.com/media/akadgym-dunkel-verschwommen.jpg",
 	benjaminShooter:
-		"https://benjaminaster.github.io/media/benjamin-shooter.png",
+		"https://benjaminaster.com/media/benjamin-shooter.png",
 	benjaminShooterRH:
-		"https://benjaminaster.github.io/media/benjamin-shooter-rechte-haelfte.png",
+		"https://benjaminaster.com/media/benjamin-shooter-rechte-haelfte.png",
 	satchFederpennal:
-		"https://benjaminaster.github.io/media/satch-federpennal.png",
+		"https://benjaminaster.com/media/satch-federpennal.png",
 	sophiaRund: function (num) {
-		return `https://benjaminaster.github.io/media/sophia-rund-${num}.png`;
+		return `https://benjaminaster.com/media/sophia-rund-${num}.png`;
 	},
 	fog:
-		"https://benjaminaster.github.io/media/fog.png",
+		"https://benjaminaster.com/media/fog.png",
 	deodorant:
-		"https://benjaminaster.github.io/media/deodorant.png",
+		"https://benjaminaster.com/media/deodorant.png",
 	satchSchultasche:
-		"https://benjaminaster.github.io/media/satch-schultasche.png",
+		"https://benjaminaster.com/media/satch-schultasche.png",
 	elias:
-		"https://benjaminaster.github.io/media/elias-am-boxautomat.png",
+		"https://benjaminaster.com/media/elias-am-boxautomat.png",
 	matisse:
-		"https://benjaminaster.github.io/media/matisse-turban.png",
+		"https://benjaminaster.com/media/matisse-turban.png",
 	megaphone:
-		"https://benjaminaster.github.io/media/megaphone-1.png",
+		"https://benjaminaster.com/media/megaphone-1.png",
 };
 
 let audioPaths = {
 
 	willkommen:
-		"https://benjaminaster.github.io/media/willkommen-beim-benjamin-shooter.ogg",
+		"https://benjaminaster.com/media/willkommen-beim-benjamin-shooter.ogg",
 }
 
 let imgs = {};

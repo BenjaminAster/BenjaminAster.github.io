@@ -68,11 +68,11 @@ void setup()
   prevDir.y = dir.y;
 
   imageMode(CENTER);
-  myHeadRight = loadImage("https://benjaminaster.github.io/media/my-head-right.png");
-  myHeadUp = loadImage("https://benjaminaster.github.io/media/my-head-up.png");
-  myHeadLeft = loadImage("https://benjaminaster.github.io/media/my-head-left.png");
-  myHeadDown = loadImage("https://benjaminaster.github.io/media/my-head-down.png");
-  elias = loadImage("https://benjaminaster.github.io/media/elias-face.png");
+  myHeadRight = loadImage("https://benjaminaster.com/media/my-head-right.png");
+  myHeadUp = loadImage("https://benjaminaster.com/media/my-head-up.png");
+  myHeadLeft = loadImage("https://benjaminaster.com/media/my-head-left.png");
+  myHeadDown = loadImage("https://benjaminaster.com/media/my-head-down.png");
+  elias = loadImage("https://benjaminaster.com/media/elias-face.png");
 
   for (int i = 0; i < snakeStartLength; i++) {
     snake.add(new PVector(int(gridWidth/2) - i, int(gridHeight/2)));

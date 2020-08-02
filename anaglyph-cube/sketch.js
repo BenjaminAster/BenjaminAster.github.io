@@ -13,7 +13,7 @@ let mouseHeight = 0;
 function setup() {
 	createCanvas(windowWidth, windowHeight, WEBGL);
 	
-  myFont = loadFont('https://benjaminaster.github.io/utils/roboto-mono.ttf');
+  myFont = loadFont('https://benjaminaster.com/utils/roboto-mono.ttf');
 
   pixelDensity(1);
 

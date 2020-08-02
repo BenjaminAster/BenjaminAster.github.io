@@ -2,7 +2,7 @@
 let astleyUrl = "https://www.youtube.com/embed/dQw4w9WgXcQ";
 let astleyUrl2 = "https://www.youtube.com/get_video_info?video_id=dQw4w9WgXcQ";
 let astleyUrl3 = "https://youtu.be/dQw4w9WgXcQ";
-let testUrl = "https://benjaminaster.github.io/tools/yt-ad-to-link/";
+let testUrl = "https://benjaminaster.com/tools/yt-ad-to-link/";
 let testUrl2 = "https://google.com"
 
 

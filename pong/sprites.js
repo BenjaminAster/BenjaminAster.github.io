@@ -47,7 +47,7 @@ function Ball() {
 
 	this.weight = unit * 8;
 	this.col = color(255);
-	this.img = loadImage("https://raw.githubusercontent.com/BenjaminAster/Benjamin-Aster/master/stuff/ball.png");
+	this.img = loadImage("https://benjaminaster.com/media/ball-matisse.png");
 	this.rot = 0;
 	this.rotDelta = 0.02;
 
