@@ -127,6 +127,9 @@ function Interface() {
 			schoolbagEliasSpan = frameRate * 30;
 			megaphoneMatisse = null;
 			megaphoneMatisseSpan = frameRate * 30;
+			if (shooter.powerModeEnabled) {
+				shooter.powerMode(false);
+			}
 			interface.playing();
 		});
 
