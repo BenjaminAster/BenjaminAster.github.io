@@ -199,7 +199,7 @@ function draw() {
 
 	textAlign(RIGHT, BOTTOM);
 	let tris = numbers.length;
-	text(`${(looping) ? "" : "rendering paused (Esc to re-enable) • "}Trianlges: ${tris} • Sum of numbers of last triangle: ${numbers[tris - 1][0] + numbers[tris - 1][1] + numbers[tris - 1][2]}`, width - unit, height - unit);
+	text(`${(looping) ? "" : "rendering paused (Esc to re-enable) • "}Triangles: ${tris} • Sum of numbers of last triangle: ${numbers[tris - 1][0] + numbers[tris - 1][1] + numbers[tris - 1][2]}`, width - unit, height - unit);
 
 	if (!explained) {
 		textAlign(RIGHT, CENTER);

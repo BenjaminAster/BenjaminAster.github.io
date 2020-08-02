@@ -79,8 +79,8 @@ function calculateColor(_colorVal) {
   
   if (_colorVal < maxIterations) {
     
-    //col = color((_colorVal * 1.5) % 256, 32 + noise(0.1 * _colorVal) * 223, 32 + noise(0.1 * _colorVal + 10) * 223);
-    col = color((0.4 * _colorVal) % 256, 150 + cos(0.02 * _colorVal) * 100.0, 150 + sin(0.02 * _colorVal) * 100.0);
+    col = color((_colorVal * 1.5) % 256, 32 + noise(0.1 * _colorVal) * 223, 32 + noise(0.1 * _colorVal + 10) * 223);
+    //col = color((0.4 * _colorVal) % 256, 150 + cos(0.02 * _colorVal) * 100.0, 150 + sin(0.02 * _colorVal) * 100.0);
     
   } else {
     col = color(0, 0, 0);
