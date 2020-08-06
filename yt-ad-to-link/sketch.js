@@ -27,7 +27,7 @@ document.getElementById("debug-info-textarea").ondblclick = function () {
 	this.value = "";
 }
 
-/*
+
 function getTitle(url, successCallback = function () { }) {
 	let title = "ERROR";
 	$.ajax({
@@ -40,7 +40,7 @@ function getTitle(url, successCallback = function () { }) {
 		}
 	});
 }
-*/
+
 
 function createUrl() {
 	debugInfo = document.getElementById("debug-info-textarea").value;
@@ -80,13 +80,13 @@ function draw() {
 		document.getElementById("url").innerText = url;
 		document.getElementById("url").href = url;
 
-		/*
+		
 		document.getElementById("title").innerText = "loading title...";
 		getTitle(`https://youtube.com/embed/${url.substring(32, url.length)}`, successCallback = function (_title) {
 			title = _title.substring(0, _title.length - 10);
 			document.getElementById("title").innerText = title;
 		});
-		*/
+		
 
 		document.getElementById("button-new-tab").hidden = false;
 		document.getElementById("button-new-tab").onclick = function () {
