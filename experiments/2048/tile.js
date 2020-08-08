@@ -2,18 +2,38 @@ class Tile {
 	constructor(uX, uY, startPowerOf2) {
 		this.uX = uX;
 		this.uY = uY;
+		this.prevUX = this.uX;
+		this.prevUY = this.uY;
 		this.powerOf2 = startPowerOf2;
 		this.number = pow(2, this.powerOf2);
+		this.animationState = 1.0;
+		this.update();
 	}
 
-	windowResized() {
+	update() {
 		this.pX = this.uX * game.tileSize;
 		this.pY = this.uY * game.tileSize;
 		this.pWid = game.tileSize;
 		this.pHei = game.tileSize;
 	}
 
+	move(uX, uY) {
+		this.prevUX = this.uX;
+		this.prevUY = this.uY;
+		this.uX = uX;
+		this.uY = uY;
+		this.pX = this.uX * game.tileSize;
+		this.pY = this.uY * game.tileSize;
+		this.animationState = 0.0;
+	}
+
 	show() {
+		if (this.animationState != 1.0) {
+			this.animationState += 1000 / frameRate() / game.animationTime;
+			this.animationState = constrain(this.animationState, 0, 1);
+			this.pX = lerp(this.prevUX, this.uX, this.animationState) * game.tileSize;
+			this.pY = lerp(this.prevUY, this.uY, this.animationState) * game.tileSize;
+		}
 		noStroke();
 		fill("orange");
 		rect(this.pX + game.border,
@@ -27,6 +47,6 @@ class Tile {
 		textAlign(CENTER, CENTER);
 		textStyle(BOLD);
 		textSize(game.tileSize / 3);
-		text(pow(2, this.powerOf2), (this.uX + 0.5) * game.tileSize, (this.uY + 0.5) * game.tileSize);
+		text(this.number, this.pX + game.tileSize / 2, this.pY + game.tileSize / 2);
 	}
 }
