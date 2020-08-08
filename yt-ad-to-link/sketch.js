@@ -9,7 +9,7 @@ let debugInfo;
 let prevFocused = false;
 let copied = false;
 let actionTaken = false;
-//let title = "";
+let title = "";
 let links = [];
 
 let openAutomatically = (getCookie("open-ad-link-automatically") == "true");
@@ -50,8 +50,8 @@ function createUrl() {
 		debugInfo = debugInfo.split('"');
 
 		for (let i = 0; i < debugInfo.length; i++) {
-			if (debugInfo[i] == "ad_docid") {
-				url = "https://www.youtube.com/watch?v=" + debugInfo[i + 2];
+			if (debugInfo[i] == "ad_docid" || debugInfo[i] == "videoid") {
+				url = `https://www.youtube.com/watch?v=${debugInfo[i + 2]}`;
 				break;
 			}
 		}

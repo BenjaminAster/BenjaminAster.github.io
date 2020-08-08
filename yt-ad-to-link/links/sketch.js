@@ -2,6 +2,7 @@
 
 let ids;
 let titles;
+let titleCount = 0;
 let innerHTMLArray;
 
 function getTitle(url, successCallback = function () { }) {
@@ -29,12 +30,14 @@ function setup() {
 			innerHTMLArray.push(`<li> <span class="url"><a href="https://www.youtube.com/watch?v=${ids[i]}"> https://www.youtube.com/watch?v=${ids[i]}</a></span> ${"\n"
 				}&#9472 [loading title...]`);
 
-
 			getTitle(`https://youtube.com/embed/${ids[i]}`, successCallback = function (title) {
 				titles[i] = title.substring(0, title.length - 10);
 				innerHTMLArray[i] = `<li> <span class="url"><a href="https://www.youtube.com/watch?v=${ids[i]}"> https://www.youtube.com/watch?v=${ids[i]}</a></span>${""
 					} &#9472 <span class="title">${titles[i]}</span></li>`;
-				document.querySelector(".urls").innerHTML = innerHTMLArray.join("");
+					titleCount++;
+				if (titleCount % 10 == 0 || titleCount >= ids.length) {
+					document.querySelector(".urls").innerHTML = innerHTMLArray.join("");
+				}
 			});
 
 		}

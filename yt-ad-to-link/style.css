@@ -1,12 +1,13 @@
-html, body {
+html{
   background-color: #111;
   color: white;
   margin: 1vw;
   border: 0vw;
   padding: 0vw;
   font-family: Roboto, sans-serif;
-
+  font-size: 1pc;
 }
+
 
 canvas {
   display: block;
@@ -96,4 +97,8 @@ button:active {
   color: white;
   font-weight: normal;
   transition: none;
+}
+
+div {
+  font-size: 1pc;
 }
