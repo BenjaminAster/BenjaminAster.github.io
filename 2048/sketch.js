@@ -8,6 +8,19 @@ function setup() {
 
 function draw() {
 	background(0);
+
+	/*
+	let randomDir = int(random(0, 20));
+	if (randomDir == 0) {
+		game.swipe("up");
+	} else if (randomDir == 1) {
+		game.swipe("down");
+	} else if (randomDir == 2) {
+		game.swipe("left");
+	} else if (randomDir == 3) {
+		game.swipe("right");
+	}
+	*/
 	
 	game.draw();
 }
