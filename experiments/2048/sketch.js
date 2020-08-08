@@ -4,8 +4,6 @@ function setup() {
 	game = new Game();
 
 	windowResized();
-
-	game.newTile();
 }
 
 function draw() {

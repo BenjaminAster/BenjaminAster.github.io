@@ -5,9 +5,13 @@ class Tile {
 		this.prevUX = this.uX;
 		this.prevUY = this.uY;
 		this.powerOf2 = startPowerOf2;
-		this.number = pow(2, this.powerOf2);
+		//this.number = pow(2, this.powerOf2);
 		this.animationState = 1.0;
 		this.update();
+	}
+
+	isAnimationFinished() {
+		return this.animationState == 1;
 	}
 
 	update() {
@@ -47,6 +51,6 @@ class Tile {
 		textAlign(CENTER, CENTER);
 		textStyle(BOLD);
 		textSize(game.tileSize / 3);
-		text(this.number, this.pX + game.tileSize / 2, this.pY + game.tileSize / 2);
+		text(pow(2, this.powerOf2), this.pX + game.tileSize / 2, this.pY + game.tileSize / 2);
 	}
 }

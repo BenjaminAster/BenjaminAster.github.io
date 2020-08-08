@@ -4,7 +4,8 @@ class Game {
 		this.gridUHei = 4;
 		this.grid = Array(this.gridUHei).fill().map(x => Array(this.gridUWid).fill(null));
 
-		this.animationTime = 100;
+		this.animationTime = 2000;
+		this.tileSet = false;
 	}
 
 	windowResized() {
@@ -53,12 +54,20 @@ class Game {
 			}
 		}
 
+		let animationFinished = true;
+
 		for (let row in this.grid) {
 			for (let clm in this.grid[0]) {
 				if (this.grid[row][clm] != null) {
 					this.grid[row][clm].show();
+					animationFinished = this.grid[row][clm].isAnimationFinished() && animationFinished;
 				}
 			}
+		}
+
+		if (animationFinished && !this.tileAdded) {
+			this.newTile();
+			this.tileAdded = true;
 		}
 	}
 
@@ -80,6 +89,17 @@ class Game {
 			}
 			this.grid = Array(this.gridUHei).fill().map(x => Array(this.gridUWid).fill(null));
 			for (let clm = 0; clm < gridTiles.length; clm++) {
+				let prevPowerOf2 = 0;
+				for (let row = gridTiles[clm].length - 1; row >= 0; row--) {
+					if (gridTiles[clm][row].powerOf2 == prevPowerOf2) {
+						gridTiles[clm].splice(row, 1);
+						gridTiles[clm][row].powerOf2++;
+						prevPowerOf2 = 0;
+					} else {
+						prevPowerOf2 = gridTiles[clm][row].powerOf2;
+					}
+				}
+
 				for (let row = 0; row < gridTiles[clm].length; row++) {
 					if (dir == "up") {
 						this.grid[row][clm] = gridTiles[clm][row];
@@ -105,6 +125,17 @@ class Game {
 			}
 			this.grid = Array(this.gridUHei).fill().map(x => Array(this.gridUWid).fill(null));
 			for (let row = 0; row < gridTiles.length; row++) {
+				let prevPowerOf2 = 0;
+				for (let clm = gridTiles[row].length - 1; clm >= 0; clm--) {
+					if (gridTiles[row][clm].powerOf2 == prevPowerOf2) {
+						gridTiles[row].splice(row, 1);
+						gridTiles[row][clm].powerOf2++;
+						prevPowerOf2 = 0;
+					} else {
+						prevPowerOf2 = gridTiles[row][clm].powerOf2;
+					} 9
+				}
+
 				for (let clm = 0; clm < gridTiles[row].length; clm++) {
 					if (dir == "left") {
 						this.grid[row][clm] = gridTiles[row][clm];
@@ -116,7 +147,8 @@ class Game {
 				}
 			}
 		}
-		this.newTile();
+		console.log(gridTiles);
+		this.tileAdded = false;
 	}
 
 }
