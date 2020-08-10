@@ -22,17 +22,17 @@ function setup() {
 	ids = loadStrings("https://benjaminaster.com/yt-ad-to-link/links/unlisted-ad-links.txt", success = function () {
 		document.querySelector("#num-of-links").innerHTML = ids.length;
 		ids.forEach(function (item, index) {
-			ids[index] = item.substring(32, item.length);
+			ids[index] = item.substring(item.length - 11, item.length);
 		});
 		innerHTMLArray = [];
 		titles = Array(ids.length).fill("error");
 		for (let i = 0; i < ids.length; i++) {
-			innerHTMLArray.push(`<li> <span class="url"><a href="https://www.youtube.com/watch?v=${ids[i]}"> https://www.youtube.com/watch?v=${ids[i]}</a></span> ${""
+			innerHTMLArray.push(`<li> <span class="url"><a href="https://www.youtube.com/watch?v=${ids[i]}"> youtu.be/${ids[i]}</a></span> ${""
 				}&#9472 ...`);
 
 			getTitle(`https://www.youtube.com/embed/${ids[i]}`, successCallback = function (title) {
 				titles[i] = title.substring(0, title.length - 10);
-				innerHTMLArray[i] = `<li> <span class="url"><a href="https://www.youtube.com/watch?v=${ids[i]}"> https://www.youtube.com/watch?v=${ids[i]}</a></span> ${""
+				innerHTMLArray[i] = `<li> <span class="url"><a href="https://www.youtube.com/watch?v=${ids[i]}"> youtu.be/${ids[i]}</a></span> ${""
 					}&#9472 <span class="title">${titles[i]}</span></li>`;
 					titleCount++;
 				if (titleCount % 10 == 0 || titleCount >= ids.length) {
@@ -44,4 +44,3 @@ function setup() {
 		document.querySelector(".urls").innerHTML = innerHTMLArray.join("");
 	});
 }
-
