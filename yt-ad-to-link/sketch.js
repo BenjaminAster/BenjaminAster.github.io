@@ -81,8 +81,8 @@ function draw() {
 		document.getElementById("url").href = url;
 
 		
-		document.getElementById("title").innerText = "loading title...";
-		getTitle(`https://youtube.com/embed/${url.substring(32, url.length)}`, successCallback = function (_title) {
+		document.getElementById("title").innerText = "...";
+		getTitle(`https://www.youtube.com/embed/${url.substring(32, url.length)}`, successCallback = function (_title) {
 			title = _title.substring(0, _title.length - 10);
 			document.getElementById("title").innerText = title;
 		});
