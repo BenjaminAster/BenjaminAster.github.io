@@ -35,7 +35,7 @@ function setup() {
 				innerHTMLArray[i] = `<li> <span class="url"><a href="https://www.youtube.com/watch?v=${ids[i]}"> youtu.be/${ids[i]}</a></span> ${""
 					}&#9472 <span class="title">${titles[i]}</span></li>`;
 					titleCount++;
-				if (titleCount % 10 == 0 || titleCount >= ids.length) {
+				if (titleCount % 4 == 0 || titleCount >= ids.length) {
 					document.querySelector(".urls").innerHTML = innerHTMLArray.join("");
 				}
 			});
