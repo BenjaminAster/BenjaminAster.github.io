@@ -4,17 +4,19 @@ class Game {
 		this.gridUHei = 4;
 		this.grid = Array(this.gridUHei).fill().map(x => Array(this.gridUWid).fill(null));
 
-		this.animationTime = 300;
+		this.animationTime = 400;
 		this.tileSet = false;
 		this.deletedTiles = [];
 		this.animationFinished = true;
+
+		this.dirArray = [];
 	}
 
 	windowResized() {
 		this.unit = width / 100;
 
-		this.gridPWid = min(width, height);
-		this.gridPHei = min(width, height);
+		this.gridPHei = min(height, width * this.gridUHei / this.gridUWid);
+		this.gridPWid = min(width, height * this.gridUWid / this.gridUHei);
 
 		this.tileSize = this.gridPWid / this.gridUWid;
 		this.border = this.tileSize / 20;
@@ -202,6 +204,41 @@ class Game {
 			//console.log(gridTiles, dir);
 			this.tileAdded = false;
 		}
+	}
+
+	addRow(side) {
+		if (side == "bottom") {
+			this.grid.push(Array(this.gridUWid).fill(null));
+			this.gridUHei++;
+		} else if (side == "top") {
+			for (let row of this.grid) {
+				for (let tile of row) {
+					if (tile) {
+						tile.uY++;
+						tile.prevUY++;
+					}
+				}
+			}
+			this.grid.unshift(Array(this.gridUWid).fill(null));
+			this.gridUHei++;
+		} else if (side == "right") {
+			for (let row of this.grid) {
+				row.push(null);
+			}
+			this.gridUWid++;
+		} else if (side == "left") {
+			for (let row of this.grid) {
+				for (let tile of row) {
+					if (tile) {
+						tile.uX++;
+						tile.prevUX++;
+					}
+				}
+				row.unshift(null);
+			}
+			this.gridUWid++
+		}
+		windowResized();
 	}
 
 }

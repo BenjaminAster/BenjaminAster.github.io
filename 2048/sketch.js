@@ -21,7 +21,12 @@ function draw() {
 		game.swipe("right");
 	}
 	*/
-	
+
+	if (game.animationFinished && game.dirArray.length) {
+		game.swipe(game.dirArray[0]);
+		game.dirArray.shift();
+	}
+
 	game.draw();
 }
 
@@ -32,13 +37,25 @@ function windowResized() {
 }
 
 function keyPressed() {
-	if (keyCode == UP_ARROW) {
-		game.swipe("up");
-	} else if (keyCode == DOWN_ARROW) {
-		game.swipe("down");
-	} else if (keyCode == LEFT_ARROW) {
-		game.swipe("left");
-	} else if (keyCode == RIGHT_ARROW) {
-		game.swipe("right");
+	if (keyIsDown(SHIFT)) {
+		if (keyCode == UP_ARROW) {
+			game.addRow("top");
+		} else if (keyCode == DOWN_ARROW) {
+			game.addRow("bottom");
+		} else if (keyCode == LEFT_ARROW) {
+			game.addRow("left");
+		} else if (keyCode == RIGHT_ARROW) {
+			game.addRow("right");
+		}
+	} else {
+		if (keyCode == UP_ARROW) {
+			game.dirArray.push("up");
+		} else if (keyCode == DOWN_ARROW) {
+			game.dirArray.push("down");
+		} else if (keyCode == LEFT_ARROW) {
+			game.dirArray.push("left");
+		} else if (keyCode == RIGHT_ARROW) {
+			game.dirArray.push("right");
+		}
 	}
 }
