@@ -1,4 +1,18 @@
 
+function addScript(path) {
+	let urls = {
+		"p5js": "https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.1.9/p5.js",
+		"p5jsSound": "https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.1.9/addons/p5.sound.js",
+	}
+
+	console.log(urls.path);
+
+
+	let imported = document.createElement("script");
+	imported.scr = path;
+	document.head.appendChild(imported);
+}
+
 function setCookie(cname, cvalue, exdays) {
 	var d = new Date();
 	d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
@@ -20,4 +34,8 @@ function getCookie(cname) {
 		}
 	}
 	return "";
+}
+
+function writeToDatabase(path, key, value) {
+
 }
