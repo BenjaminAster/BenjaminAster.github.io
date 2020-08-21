@@ -1,0 +1,52 @@
+<html>
+
+<head>
+	<title>This is a Firebase test</title>
+
+</head>
+
+<body>
+	<h3>This is a test</h3>
+
+	<!-- The core Firebase JS SDK is always required and must be listed first -->
+	<!--script src="https://www.gstatic.com/firebasejs/7.19.0/firebase-app.js"></script-->
+	<script src="https://www.gstatic.com/firebasejs/7.19.0/firebase.js"></script>
+
+	<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+	<!--script src="https://www.gstatic.com/firebasejs/7.19.0/firebase-analytics.js"></script-->
+
+	<script>
+		// Your web app's Firebase configuration
+		var config = {
+			apiKey: "AIzaSyAyDvalHFFDny0P-z80jcDcZ33Zy0c1kvo",
+			authDomain: "test-project-70819.firebaseapp.com",
+			databaseURL: "https://test-project-70819.firebaseio.com",
+			projectId: "test-project-70819",
+			storageBucket: "test-project-70819.appspot.com",
+			//messagingSenderId: "36885342707",
+			//appId: "1:36885342707:web:0e659c027d34665fd9ca86",
+			//measurementId: "G-XNVZ2VTL43"
+		};
+		// Initialize Firebase
+		firebase.initializeApp(config);
+		//firebase.analytics();
+
+
+		function saveToFirebase(email) {
+			var emailObject = {
+				email: email
+			};
+
+			firebase.database().ref('subscription-entries').push().set(emailObject)
+				.then(function (snapshot) {
+					success(); // some success method
+				}, function (error) {
+					console.log('error' + error);
+					error(); // some error method
+				});
+		}
+	</script>
+</body>
+
+</html>
