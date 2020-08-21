@@ -1,4 +1,4 @@
-function includeScript(path, sucessCallback) {
+function includeScript(path, successCallback = function () { }) {
 	let urls = {
 		p5js: "https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.1.9/p5.js",
 		p5jsSound: "https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.1.9/addons/p5.sound.js",
@@ -6,7 +6,7 @@ function includeScript(path, sucessCallback) {
 
 		cookies: "https://benjaminaster.com/utils/cookies.js",
 		//database: "https://benjaminaster.com/utils/database.js",
-		database: "https://benjaminaster.com/utils/database.js",
+		database: "https://raw.githubusercontent.com/BenjaminAster/benjaminaster.com/master/utils/database.js",
 	}
 
 	try {
@@ -15,7 +15,7 @@ function includeScript(path, sucessCallback) {
 
 	console.log(`including:`, path);
 
-	$.getScript(path, function() {
+	$.getScript(path, function () {
 		successCallback();
 	});
 

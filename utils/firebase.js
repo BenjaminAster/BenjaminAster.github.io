@@ -1,5 +1,8 @@
 includeScript("https://www.gstatic.com/firebasejs/7.19.0/firebase.js", function () {
 
+
+	console.log("firebase file included");
+
 	let config = {
 		apiKey: "AIzaSyDS76v4WlBEUbJrQTbDbwFFHdN3n_zqKFg",
 		authDomain: "benjamin-aster.firebaseapp.com",
@@ -25,6 +28,8 @@ includeScript("https://www.gstatic.com/firebasejs/7.19.0/firebase.js", function 
 	function readFromDatabase(path, key, value) {
 
 	}
+
+
 });
 
 
