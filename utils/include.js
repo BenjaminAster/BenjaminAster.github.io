@@ -6,7 +6,7 @@ function includeScript(path, successCallback = function () { }) {
 
 		cookies: "https://benjaminaster.com/utils/cookies.js",
 		//database: "https://benjaminaster.com/utils/database.js",
-		database: "https://raw.githubusercontent.com/BenjaminAster/benjaminaster.com/master/utils/database.js",
+		database: "https://benjaminaster.com/utils/firebase.js",
 	}
 
 	try {
