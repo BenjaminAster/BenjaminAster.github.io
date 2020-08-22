@@ -60,14 +60,12 @@ function createUrl() {
 }
 
 function setup() {
-	database.getKeys("/unlistedAdLinks", (keys) => {
-
-		ids = Array(keys.length)
+	database.read("/unlistedAdLinks", (data) => {
+		keys = Object.keys(data);
+		ids = Array(keys.length);
 		document.querySelector("#num-of-links").innerHTML = keys.length;
 		for (let key in keys) {
-			database.read(`/unlistedAdLinks/${keys[key]}`, (value) => {
-				ids[key] = value.id;
-			});
+			ids[key] = data[`${keys[key]}`].id;
 		}
 	});
 

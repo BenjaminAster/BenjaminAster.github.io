@@ -62,6 +62,12 @@ $.getScript("https://www.gstatic.com/firebasejs/7.19.0/firebase.js", function ()
 					callback(keys);
 				})
 			}
+
+			on(path, onChange = function () { }) {
+				this.database.ref(path).on("value", function (data) {
+					onChange();
+				})
+			}
 		}
 
 		database = new Database();
