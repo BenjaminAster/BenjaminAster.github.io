@@ -2,18 +2,15 @@
 // © 2020 Benjamin Aster
 
 
-let id = "";
 let url = "";
-let prevId = "";
+let prevUrl = "";
 let prevDebugInfo;
 let debugInfo;
 let prevFocused = false;
 let copied = false;
 let actionTaken = false;
-let alreadyContained = true;
 let title = "";
-let ids = [];
-//let keys = [];
+let links = [];
 
 let openAutomatically = (getCookie("open-ad-link-automatically") == "true");
 
@@ -35,6 +32,8 @@ function getTitle(url, successCallback = function () { }) {
 	let title = "ERROR";
 	$.ajax({
 		url: `https://textance.herokuapp.com/title/${url}`,
+		// https://cors-anywhere.herokuapp.com/
+		// https://medium.com/@dtkatz/3-ways-to-fix-the-cors-error-and-how-access-control-allow-origin-works-d97d55946d9
 		complete: function (data) {
 			title = data.responseText;
 			successCallback(title);
@@ -45,14 +44,14 @@ function getTitle(url, successCallback = function () { }) {
 
 function createUrl() {
 	debugInfo = document.getElementById("debug-info-textarea").value;
-	prevId = id;
+	prevUrl = url;
 	if (debugInfo != prevDebugInfo) {
 		prevDebugInfo = debugInfo;
 		debugInfo = debugInfo.split('"');
 
 		for (let i = 0; i < debugInfo.length; i++) {
 			if (debugInfo[i] == "ad_docid" || debugInfo[i] == "videoid") {
-				id = debugInfo[i + 2];
+				url = `https://www.youtube.com/watch?v=${debugInfo[i + 2]}`;
 				break;
 			}
 		}
@@ -60,65 +59,34 @@ function createUrl() {
 }
 
 function setup() {
-	database.getKeys("/unlistedAdLinks", (keys) => {
-
-		ids = Array(keys.length)
-		document.querySelector("#num-of-links").innerHTML = keys.length;
-		for (let key in keys) {
-			database.read(`/unlistedAdLinks/${keys[key]}`, (value) => {
-				ids[key] = value.id;
-			});
-		}
+	//links = loadStrings("./links/unlisted-ad-links.txt");
+	links = loadStrings("https://benjaminaster.com/yt-ad-to-link/links/unlisted-ad-links.txt", success = function() {
+		document.querySelector("#num-of-links").innerHTML = links.length;
 	});
-
 }
 
 function draw() {
 	createUrl();
 
-	if (prevId != id && id != "") {
+	if (prevUrl != url && url != "") {
 		actionTaken = false;
 
-		url = `https://www.youtube.com/watch?v=${id}`;
-
-
-
 		document.getElementById("url-infos").hidden = false;
-
-		let this_list = `<a href="./links">this</a> list`;
-		if (ids.includes(id)) {
-			document.getElementById("url-infotext").innerHTML =
-				`<span style="color: red;">already contained</span> in ${this_list}`
-			alreadyContained = true;
-		} else {
-			document.getElementById("url-infotext").innerHTML =
-				`<span style="color: yellow;">adding</span> to ${this_list}...`
-			alreadyContained = false;
-		}
+		document.getElementById("url-infotext").innerHTML = `The original video of the ad (${
+			(links.includes(url)) ? 
+			'<span style="color: springGreen;">already</span>' : 
+			'<span style="color: red;">not yet</span>'
+			} in <a href="./links">this</a> list):`;
 		document.getElementById("url").innerText = url;
 		document.getElementById("url").href = url;
 
-
+		
 		document.getElementById("title").innerText = "...";
-		getTitle(`https://www.youtube.com/embed/${id}`, successCallback = function (_title) {
+		getTitle(`https://www.youtube.com/embed/${url.substring(32, url.length)}`, successCallback = function (_title) {
 			title = _title.substring(0, _title.length - 10);
 			document.getElementById("title").innerText = title;
-
-			if (!alreadyContained) {
-				if (title == "") {
-					document.getElementById("url-infotext").innerHTML =
-						`<span style="color: red;">ERROR - This video doesn't exist</span>`;
-				} else {
-					database.push("/unlistedAdLinks", {
-						id: id,
-						title: title,
-					});
-					document.getElementById("url-infotext").innerHTML =
-						`<span style="color: springGreen;">successfully added</span> to ${this_list}`;
-				}
-			}
 		});
-
+		
 
 		document.getElementById("button-new-tab").hidden = false;
 		document.getElementById("button-new-tab").onclick = function () {

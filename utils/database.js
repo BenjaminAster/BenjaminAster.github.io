@@ -40,11 +40,26 @@ $.getScript("https://www.gstatic.com/firebasejs/7.19.0/firebase.js", function ()
 				this.database.ref(path).push(object);
 			}
 
-			read(path, key, callback = function () { }) {
-				let value;
-				this.database.ref(path).once("value", function (snapshot) {
-					value = eval(`snapshot.val().${key}`);
+			read(path, callback = function () { }) {
+				this.database.ref(path).once("value", function (data) {
+					let value = data.val();
 					callback(value);
+				})
+			}
+
+			/*
+			read(path, key, callback = function () { }) {
+				this.database.ref(path).once("value", function (data) {
+					let value = eval(`data.val().${key}`);
+					callback(value);
+				})
+			}
+			*/
+
+			getKeys(path, callback = function () { }) {
+				this.database.ref(path).once("value", function (data) {
+					let keys = Object.keys(data.val());
+					callback(keys);
 				})
 			}
 		}
