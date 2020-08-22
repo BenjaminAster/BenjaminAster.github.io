@@ -60,14 +60,17 @@ function createUrl() {
 }
 
 function setup() {
-	database.read("/unlistedAdLinks", (data) => {
-		keys = Object.keys(data);
-		ids = Array(keys.length);
-		document.querySelector("#num-of-links").innerHTML = keys.length;
-		for (let key in keys) {
-			ids[key] = data[`${keys[key]}`].id;
-		}
-	});
+
+	database.on("/unlistedAdLinks", () => {
+		database.read("/unlistedAdLinks", (data) => {
+			keys = Object.keys(data);
+			ids = Array(keys.length);
+			document.querySelector("#num-of-links").innerHTML = keys.length;
+			for (let key in keys) {
+				ids[key] = data[keys[key]].id;
+			}
+		});
+	})
 
 }
 
@@ -86,11 +89,11 @@ function draw() {
 		let this_list = `<a href="./links">this</a> list`;
 		if (ids.includes(id)) {
 			document.getElementById("url-infotext").innerHTML =
-				`<span style="color: red;">already contained</span> in ${this_list}`
+				`<span style="color: yellow;">already</span> in ${this_list}`
 			alreadyContained = true;
 		} else {
 			document.getElementById("url-infotext").innerHTML =
-				`<span style="color: yellow;">adding</span> to ${this_list}...`
+				`<span style="color: mediumAquamarine;">adding</span> to ${this_list}...`
 			alreadyContained = false;
 		}
 		document.getElementById("url").innerText = url;
