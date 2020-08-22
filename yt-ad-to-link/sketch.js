@@ -112,7 +112,7 @@ function draw() {
 				} else {
 					database.push("/unlistedAdLinks", {
 						id: id,
-						title: title,
+						title: escapeHtmlEntities(title),
 					});
 					document.getElementById("url-infotext").innerHTML =
 						`<span style="color: springGreen;">successfully added</span> to ${this_list}`;
