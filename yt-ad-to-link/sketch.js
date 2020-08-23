@@ -75,7 +75,9 @@ function setup() {
 }
 
 function draw() {
-	createUrl();
+	if (ids.length > 0) {
+		createUrl();
+	}
 
 	if (prevId != id && id != "") {
 		actionTaken = false;
@@ -89,11 +91,11 @@ function draw() {
 		let this_list = `<a href="./links">this</a> list`;
 		if (ids.includes(id)) {
 			document.getElementById("url-infotext").innerHTML =
-				`<span style="color: yellow;">already</span> in ${this_list}`
+				`<span style="color: springGreen;">already</span> in ${this_list}`
 			alreadyContained = true;
 		} else {
 			document.getElementById("url-infotext").innerHTML =
-				`<span style="color: mediumAquamarine;">adding</span> to ${this_list}...`
+				`<span style="color: yellow;">adding</span> to ${this_list}...`
 			alreadyContained = false;
 		}
 		document.getElementById("url").innerText = url;
@@ -173,3 +175,13 @@ function draw() {
 
 	prevFocused = focused;
 }
+
+/*
+for (let id = 0; id < ids.length; id++) {
+	for (let i = 0; i < id; i++) {
+		if (ids[i] == ids[id]) {
+			console.log(i, ids[i], id, ids[id]);
+		}
+	}
+}
+*/
