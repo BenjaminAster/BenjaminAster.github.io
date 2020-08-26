@@ -86,7 +86,7 @@ function draw() {
 		actionTaken = false;
 
 		url = `https://www.youtube.com/watch?v=${id}`;
-
+		title = "";
 
 		prevDebugInfoPasted = millis();
 
