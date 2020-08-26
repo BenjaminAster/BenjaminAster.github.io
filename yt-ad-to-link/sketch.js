@@ -13,7 +13,10 @@ let actionTaken = false;
 let alreadyContained = true;
 let title = "";
 let ids = [];
+let prevDebugInfoPasted = 0;
 //let keys = [];
+
+const this_list = `<a href="./links">this</a> list`;
 
 let openAutomatically = (getCookie("open-ad-link-automatically") == "true");
 
@@ -85,10 +88,10 @@ function draw() {
 		url = `https://www.youtube.com/watch?v=${id}`;
 
 
+		prevDebugInfoPasted = millis();
 
 		document.getElementById("url-infos").hidden = false;
 
-		let this_list = `<a href="./links">this</a> list`;
 		if (ids.includes(id)) {
 			document.getElementById("url-infotext").innerHTML =
 				`<span style="color: springGreen;">already</span> in ${this_list}`
@@ -168,6 +171,25 @@ function draw() {
 			window.open(url, "_blank");
 		}
 	}
+
+
+	if (id != "" && title == "" && millis() - prevDebugInfoPasted >= 3000) {
+		title = "ERROR - Couldn't get title";
+
+		document.getElementById("title").innerText = title;
+
+		if (!alreadyContained) {
+			database.push("/unlistedAdLinks", {
+				id: id,
+				title: escapeHtmlEntities(title),
+			});
+			document.getElementById("url-infotext").innerHTML =
+				`<span style="color: springGreen;">added</span> to ${this_list}, but couldn't get title`;
+		}
+
+	}
+
+
 	if (focused && !prevFocused) {
 		document.getElementById("debug-info-textarea").focus();
 		document.getElementById("debug-info-textarea").value = "";
