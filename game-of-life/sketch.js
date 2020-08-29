@@ -13,7 +13,7 @@ function setup() {
 		}Press Space to pause/play the Game of Life.${"\n"
 		}Press D to do one Generation while in pause mode.${"\n"
 		}Press F to fit the whole canvas onto the screen.`);
-		
+
 
 	createCanvas(windowWidth, windowHeight);
 
@@ -75,5 +75,13 @@ function keyPressed() {
 		vis.fitFrame();
 	} else if (key == 'd') {
 		gol.newGeneration();
+	} else if (keyCode == UP_ARROW) {
+		keyIsDown(SHIFT) ? gol.deleteRow("top") : gol.addRow("top");
+	} else if (keyCode == DOWN_ARROW) {
+		keyIsDown(SHIFT) ? gol.deleteRow("bottom") : gol.addRow("bottom");
+	} else if (keyCode == LEFT_ARROW) {
+		keyIsDown(SHIFT) ? gol.deleteRow("left") : gol.addRow("left");
+	} else if (keyCode == RIGHT_ARROW) {
+		keyIsDown(SHIFT) ? gol.deleteRow("right") : gol.addRow("right");
 	}
 }

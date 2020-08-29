@@ -2,7 +2,7 @@ class Visualisation {
 
 	constructor() {
 		this.minX = 0;
-		this.maxX = height * gol.gridWidth / gol.gridHeight;  // intended
+		this.maxX = height * gol.gridWidth / gol.gridHeight;
 		this.minY = 0;
 		this.maxY = height;
 		this.zoomNum = 1;
@@ -82,7 +82,7 @@ class Visualisation {
 
 	fitFrame() {
 		this.minX = 0;
-		this.maxX = height * gol.gridWidth / gol.gridHeight;  // intended
+		this.maxX = height * gol.gridWidth / gol.gridHeight;
 		this.minY = 0;
 		this.maxY = height;
 	}

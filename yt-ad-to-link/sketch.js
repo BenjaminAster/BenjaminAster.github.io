@@ -94,11 +94,11 @@ function draw() {
 
 		if (ids.includes(id)) {
 			document.getElementById("url-infotext").innerHTML =
-				`<span style="color: springGreen;">already</span> in ${this_list}`
+				`<span style="color: springGreen;">already</span> in ${this_list}`;
 			alreadyContained = true;
 		} else {
 			document.getElementById("url-infotext").innerHTML =
-				`<span style="color: yellow;">adding</span> to ${this_list}...`
+				`<span style="color: yellow;">adding</span> to ${this_list}...`;
 			alreadyContained = false;
 		}
 		document.getElementById("url").innerText = url;

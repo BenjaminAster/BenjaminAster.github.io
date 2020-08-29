@@ -1,7 +1,7 @@
 class GameOfLife {
 	constructor() {
-		this.gridWidth = 160;
-		this.gridHeight = 90;
+		this.gridWidth = 30;
+		this.gridHeight = 30;
 		this.grid = Array(this.gridHeight).fill(0).map(x => Array(this.gridWidth).fill(false));
 
 		this.prevClm;
@@ -84,5 +84,41 @@ class GameOfLife {
 				}
 			}
 		}
+	}
+
+	addRow(side) {
+		if (side == "top") {
+			this.grid.unshift(new Array(this.gridWidth).fill(false));
+			this.gridHeight++;
+		} else if (side == "bottom") {
+			this.grid.push(new Array(this.gridWidth).fill(false));
+			this.gridHeight++;
+		} else if (side == "left") {
+			this.grid.forEach((value) => value.unshift(false));
+			this.gridWidth++;
+		} else if (side == "right") {
+			this.grid.forEach((value) => value.push(false));
+			this.gridWidth++;
+		}
+		vis.fitFrame();
+		console.log(`grid size: ${this.gridWidth}*${this.gridHeight}`);
+	}
+
+	deleteRow(side) {
+		if (side == "top") {
+			this.grid.shift();
+			this.gridHeight--;
+		} else if (side == "bottom") {
+			this.grid.pop();
+			this.gridHeight--;
+		} else if (side == "left") {
+			this.grid.forEach((value) => value.shift());
+			this.gridWidth--;
+		} else if (side == "right") {
+			this.grid.forEach((value) => value.pop());
+			this.gridWidth--;
+		}
+		vis.fitFrame();
+		console.log(`grid size: ${this.gridWidth}*${this.gridHeight}`);
 	}
 }

@@ -58,7 +58,12 @@ $.getScript("https://www.gstatic.com/firebasejs/7.19.0/firebase.js", function ()
 
 			getKeys(path, callback = function () { }) {
 				this.database.ref(path).once("value", function (data) {
-					let keys = Object.keys(data.val());
+					let keys;
+					if (data.val()) {
+						keys = Object.keys(data.val());
+					} else {
+						keys = [];
+					}
 					callback(keys);
 				})
 			}
