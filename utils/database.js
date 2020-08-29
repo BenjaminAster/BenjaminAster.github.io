@@ -69,8 +69,8 @@ $.getScript("https://www.gstatic.com/firebasejs/7.19.0/firebase.js", function ()
 			}
 
 			on(path, onChange = function () { }) {
-				this.database.ref(path).on("value", function () {
-					onChange();
+				this.database.ref(path).on("value", function (data) {
+					onChange(data.val());
 				})
 			}
 		}

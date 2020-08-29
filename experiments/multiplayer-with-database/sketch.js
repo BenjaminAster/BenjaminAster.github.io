@@ -7,18 +7,12 @@ function setup() {
 
 	windowResized();
 
-	/*
-	try {
-		database.getKeys("/multiplayer-test", (keys) => {
-			playerName = `player-${keys.length}`;
-		});
-	} catch {
-		playerName = "player-0";
-	}
-	*/
+	database.getKeys("/multiplayer-test", (keys) => {
+		playerName = `player-${keys.length}`;
+	});
 
-	database.database.ref("/multiplayer-test").once("value", function (data) {
-		console.log(data.val());
+	database.on("/multiplayer-test", () => {
+		
 	})
 }
 
