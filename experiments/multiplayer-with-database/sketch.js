@@ -40,8 +40,8 @@ function draw() {
 
 	if (mouseIsPressed && playerNum != null) {
 		database.write(`/multiplayer-test/player-${playerNum}`, {
-			x: mouseX,
-			y: mouseY,
+			x: int(mouseX),
+			y: int(mouseY),
 		});
 	}
 }
