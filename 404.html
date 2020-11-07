@@ -2,24 +2,13 @@
 <html lang="en">
 
 <head>
-	<title>ERROR 404 - Page not found</title>
-	<link rel="icon" href="https://benjaminaster.com/media/red-circle.png">
-
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.0.0/p5.js"></script>
-	<link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
-
-	<link rel="stylesheet" type="text/css" href="https://benjaminaster.com/404.css">
-
-
+	
 </head>
 
 <body>
-	<div id="infotext"></div>
-
-	<script src="https://benjaminaster.com/404-letterbox.js"></script>
-	<script src="https://benjaminaster.com/404-imgbox.js"></script>
-	<script src="https://benjaminaster.com/404.js"></script>
-
+	<script>
+		document.head.innerHTML += `<meta http-equiv="refresh" content="0; url=https://benjaminaster.com${location.path}">`;
+	</script>
 </body>
 
 </html>
