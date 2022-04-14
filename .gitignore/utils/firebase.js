@@ -1,1 +1,0 @@
-$("head").apppend(document.createElement("script"));
